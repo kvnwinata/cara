@@ -540,17 +540,19 @@ $(document).ready(function(){
 		return x+3*r;
 	}
 
+	var _4 = function(x, y, r) {
+		context.moveTo(x+1.5*r, y);
+		context.lineTo(x+1.5*r, y-4*r);
+		context.lineTo(x, y-r);
+		context.lineTo(x+2*r, y-r);
+		return x+3*r;
+	}
+
 	var _5 = function(x, y, r) {
-        // context.moveTo(x+2*r, y-4*r);
-        // context.lineTo(x, y-4*r);
-        // context.lineTo(x, y-2*r);
-        // context.lineTo(x+r, y-2*r);
-        // context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI);
         context.moveTo(x+2*r, y-4*r);
         context.lineTo(x, y-4*r);
-        context.lineTo(x, y-2.5*r);
-        context.lineTo(x+r, y-2.5*r);
-        context.arc(x+r, y-1.5*r, r, 3*Math.PI/2, 0);
+        context.lineTo(x, y-2*r);
+        context.arc(x+r, y-2*r, r, Math.PI, 0);
         context.lineTo(x+2*r, y-r);
         context.arc(x+r, y-r, r, 0, Math.PI);
         return x+3*r;
@@ -563,6 +565,13 @@ $(document).ready(function(){
     	context.arc(x+r, y-r, r, -Math.PI, Math.PI, true);
     	return x+3*r;
     }
+
+    var _7 = function(x, y, r) {
+		context.moveTo(x, y-4*r);
+		context.lineTo(x+2*r, y-4*r);
+		context.lineTo(x+0.5*r, y);
+		return x+3*r;
+	}
 
     var _8 = function(x, y, r) {
     	context.moveTo(x+2*r, y-3*r);
@@ -697,6 +706,8 @@ $(document).ready(function(){
     		return _8(ax, ay, ar);
     		case '9':
     		return _9(ax, ay, ar);
+    		default:
+    		return ax;
     	}
     }
 
