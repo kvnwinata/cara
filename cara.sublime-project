@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "app/views"
+		},
+		{
+			"path": "app/assets/javascripts"
+		},
+		{
+			"path": "app/assets/stylesheets"
+		},
+		{
+			"path": "config"
+		}
+	]
+}
