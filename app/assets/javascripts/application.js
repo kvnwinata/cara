@@ -221,7 +221,11 @@ $(document).ready(function(){
 	}
 
 	var _f = function(x, y, r) {
-		context.moveTo(x+2*r, y-r);
+		if (font_style == 'serif') {
+			context.moveTo(x+2*r, y);
+		} else {
+			context.moveTo(x+2*r, y-r);
+		}
 		context.lineTo(x+2*r, y+r);
 		context.arc(x+r, y+r, r, 0, Math.PI);
 	}
@@ -281,10 +285,15 @@ $(document).ready(function(){
 	}
 
 	var _fn = function(x, y, r) {
-		context.moveTo(x+2*r, y-2*r);
-		context.lineTo(x+r, y-2*r);
-		context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
-		context.arc(x+r, y+r, r, 3*Math.PI/2, Math.PI);
+		if (font_style == 'serif') {
+			_n(x, y, r);
+			_f(x, y, r);
+		} else {
+			context.moveTo(x+2*r, y-2*r);
+			context.lineTo(x+r, y-2*r);
+			context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+			context.arc(x+r, y+r, r, 3*Math.PI/2, Math.PI);
+		}
 		return x+3*r;
 	}
 
@@ -344,7 +353,11 @@ $(document).ready(function(){
 	}
 
 	var _v = function(x, y, r) {
-		context.moveTo(x+2*r, y-r);
+		if (font_style == 'serif') {
+			context.moveTo(x+2*r, y);
+		} else {
+			context.moveTo(x+2*r, y-r);
+		}
 		context.lineTo(x+2*r, y+r);
 		context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
 	}
@@ -404,11 +417,16 @@ $(document).ready(function(){
 	}
 
 	var _vn = function(x, y, r) {
-		context.moveTo(x+2*r, y-2*r);
-		context.lineTo(x+r, y-2*r);
-		context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
-		context.arc(x+r, y+r, r, 3*Math.PI/2, 0);
-		context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
+		if (font_style == 'serif') {
+			_n(x, y, r);
+			_v(x, y, r);
+		} else {
+			context.moveTo(x+2*r, y-2*r);
+			context.lineTo(x+r, y-2*r);
+			context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+			context.arc(x+r, y+r, r, 3*Math.PI/2, 0);
+			context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
+		}
 		return x+3*r;
 	}
 
@@ -552,6 +570,7 @@ $(document).ready(function(){
 	var _1 = function(x, y, r) {
 		context.moveTo(x, y-3*r);
 		context.arc(x, y-4*r, r, Math.PI/2, 0, true);
+		context.moveTo(x+r, y-4*r);
 		context.lineTo(x+r, y);
 		return x+2.5*r;
 	}
@@ -575,6 +594,7 @@ $(document).ready(function(){
 	var _4 = function(x, y, r) {
 		context.moveTo(x+1.5*r, y);
 		context.lineTo(x+1.5*r, y-4*r);
+		context.moveTo(x+1.5*r, y-4*r);
 		context.lineTo(x, y-r);
 		context.lineTo(x+2*r, y-r);
 		return x+3*r;
