@@ -26,6 +26,9 @@ $(document).ready(function(){
 	var right_a = function(x, y, r) {
 		context.moveTo(x, y-r);
 		context.lineTo(x, y-2*r);
+		if (font_style == 'serif') {
+			context.moveTo(x-0.5*r, y-2*r);
+		}
 		context.lineTo(x+r, y-2*r);
 		context.arc(x+r, y-r, r, 3*Math.PI/2, 0);
 		context.lineTo(x+2*r, y);
@@ -46,10 +49,27 @@ $(document).ready(function(){
 		return x+3*r;
 	}
 
+	var left_t = function(x, y, r) {
+		context.moveTo(x+2*r, y-r);
+		context.arc(x+r, y-r, r, 2*Math.PI, 0);
+		return x+3*r;
+	}
+
+	var left_p = function(x, y, r) {
+		context.moveTo(x, y-2*r);
+		context.lineTo(x, y-r);
+		context.arc(x+r, y-r, r, Math.PI, 0, true);
+		return x+3*r;
+	}
+
 	var right_p = function(x, y, r) {
 		context.moveTo(x, y-r);
 		context.arc(x+r, y-r, r, Math.PI, 0, true);
 		context.lineTo(x+2*r, y-2*r);
+		if (font_style == 'serif') {
+			context.moveTo(x+2*r, y-2*r);
+			context.lineTo(x+2*r, y);
+		}
 		return x+3*r;
 	}
 
@@ -57,7 +77,12 @@ $(document).ready(function(){
 		context.moveTo(x, y);
 		context.lineTo(x, y-r);
 		context.arc(x+r, y-r, r, Math.PI, 3*Math.PI/2);
-		context.lineTo(x+2*r, y-2*r);
+		if (font_style == 'serif') {
+			context.lineTo(x+2.5*r, y-2*r);
+			context.moveTo(x+2*r, y-2*r);
+		} else {
+			context.lineTo(x+2*r, y-2*r);
+		}
 		context.lineTo(x+2*r, y-r);
 		return x+3*r;
 	}
@@ -102,19 +127,22 @@ $(document).ready(function(){
 	}
 
 	var _x = function(x, y, r) {
-		_p(x, y, r);
+		left_p(x, y, r);
+		context.lineTo(x+2*r, y-2*r);
 		right_a(x+2*r, y, r);
 		return x+5*r;
 	}
 
 	var _t = function(x, y, r) {
-		context.moveTo(x+2*r, y-r);
-		context.arc(x+r, y-r, r, 2*Math.PI, 0);
+		left_t(x, y, r);
+		if (font_style == 'serif') {
+			context.lineTo(x+2*r, y);
+		}
 		return x+3*r;
 	}
 
 	var _d = function(x, y, r) {
-		_t(x, y, r);
+		left_t(x, y, r);
 		right_p(x+2*r, y, r);
 		return x+5*r;
 	}
@@ -135,8 +163,8 @@ $(document).ready(function(){
 	}
 
 	var _b = function(x, y, r) {
-		_p(x, y, r);
-		right_p(x+2*r, y, r);
+		left_p(x, y, r);
+		_p(x+2*r, y, r);
 		return x+5*r;
 	}
 
@@ -145,6 +173,10 @@ $(document).ready(function(){
 		context.lineTo(x+2*r, y-2*r);
 		context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
 		context.lineTo(x+2*r, y-2*r);
+		if (font_style == 'serif') {
+			context.moveTo(x+2*r, y-2*r);
+			context.lineTo(x+2*r, y);
+		}
 		return x+3*r;
 	}
 
@@ -595,16 +627,21 @@ $(document).ready(function(){
 
     var linespace = 7*ar;
 
-    var parse = function(text, ax, ay, ar) {
+    var parse = function(text) {
     	canvas.width = canvas.width;
-    	context.lineWidth = font_width;
+    	context.lineWidth = font_width_abs;
     	context.lineCap = 'round';
         context.strokeStyle = font_color;
 
     	context.beginPath();
     	var c;
-    	var orig_x = ax;
     	var state = 'a';
+
+    	var ar = font_size;
+    	var ax = ar*2;
+    	var ay = ar*5;
+    	var orig_x = ax;
+
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
     		if (c == 'f') {
@@ -615,6 +652,10 @@ $(document).ready(function(){
     			ax = orig_x;
     			ay += 7*ar;
     		} else {
+    			if (ax > canvas.width - ar*5) {
+    				ax = orig_x;
+    				ay += 7*ar;
+    			}
     			ax = draw(c, state, ax, ay, ar);
     			state = 'a';
     		}
@@ -719,6 +760,7 @@ $(document).ready(function(){
     var font_style = 'sans-serif';
     var font_size = 10;
     var font_width = 2;
+    var font_width_abs = font_size/10 * font_width;
     var font_color = 'black';
 
     // Sets the default values:
@@ -730,32 +772,34 @@ $(document).ready(function(){
 
     $("#font-size").change(function(){
     	font_size = parseInt($(this).val());
+    	font_width_abs = font_size/10 * font_width;
         var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50, 70, font_size);
+		parse(input_text);
     });
 
     $("#font-width").change(function(){
     	font_width = parseInt($(this).val());
+    	font_width_abs = font_size/10 * font_width;
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50, 70, font_size);
+		parse(input_text);
     });
 
     $("#font-style").change(function(){
     	font_style = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50, 70, font_size);
+		parse(input_text);
     });
 
     $("#font-color").change(function(){
     	font_color = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50, 70, font_size);
+		parse(input_text);
 	});
 
 	// Textarea input listens to keypress events.
 	$(".textarea-home#input").keyup(function(){
 		var input_text = $(this).val();
-		parse(input_text, 50, 70, font_size);
+		parse(input_text);
 	});
 
 });

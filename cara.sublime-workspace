@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"font",
+				"font_color"
+			],
+			[
+				"line",
+				"lineWidth"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"text",
+				"textarea-output"
+			],
+			[
 				"mar",
 				"margin"
 			],
@@ -88,10 +104,6 @@
 				"padding-left"
 			],
 			[
-				"margin",
-				"margin-top"
-			],
-			[
 				"paddin",
 				"padding-bottom"
 			],
@@ -158,10 +170,6 @@
 			[
 				"is",
 				"is_admin"
-			],
-			[
-				"font",
-				"font-size"
 			],
 			[
 				"pa",
@@ -301,6 +309,7 @@
 	"file_history":
 	[
 		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
+		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
 		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/application.css",
 		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
@@ -426,8 +435,7 @@
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/show.js",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/answer.rb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/question.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/index.html.erb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/_form.html.erb"
+		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/index.html.erb"
 	],
 	"find":
 	{
@@ -446,6 +454,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"font_size",
+			"beginPath",
+			"befgin",
+			"lineWidth",
+			"context",
+			"canvas",
 			"groups_path",
 			"meeting",
 			"attend",
