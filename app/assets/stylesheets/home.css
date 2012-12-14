@@ -1,8 +1,15 @@
 /*HOME*/
 
-
-
 .textarea-home{
 	margin-left: 10%;
-	width: 80%;
+	width: 90%;
+}
+
+.center{
+	text-align: center;
+}
+
+#textarea-output{
+	margin: 0px auto;
+	border: 1px solid;
 }
