@@ -1,4 +1,4 @@
 cara
 ====
 
-Pangus's font.
+Cara font.
