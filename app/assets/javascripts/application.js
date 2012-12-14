@@ -595,7 +595,8 @@ $(document).ready(function(){
 
     var linespace = 7*ar;
 
-    var parse = function(text, ax, ay, ar) {
+    var parse = function(text, ax, ay, ar, font_width) {
+    	context.lineWidth = font_width;
     	canvas.width = canvas.width;
     	var c;
     	var orig_x = ax;
@@ -711,10 +712,47 @@ $(document).ready(function(){
     	}
     }
 
+    // Default values
+    var font_style = 'sans-serif';
+    var font_size = 10;
+    var font_width = 2;
+    var font_color = 'black';
+
+    // Sets the default values:
+    $("#font-size").val(font_size);
+    $("#font-style").val(font_style);
+    $("#font-width").val(font_width);
+    $("#font-color").val(font_color);
+
+
+    $("#font-size").change(function(){
+    	font_size = parseInt($(this).val());
+        var input_text = $(".textarea-home#input").val();
+		parse(input_text, 50,70, font_size);
+    });
+
+    $("#font-width").change(function(){
+    	font_width = parseInt($(this).val());
+    	var input_text = $(".textarea-home#input").val();
+		parse(input_text, 50,70, font_size);
+    });
+
+    $("#font-style").change(function(){
+    	font_style = $(this).val();
+    	var input_text = $(".textarea-home#input").val();
+		parse(input_text, 50,70, font_size);
+    });
+
+    $("#font-color").change(function(){
+    	font_color = $(this).val();
+    	var input_text = $(".textarea-home#input").val();
+		parse(input_text, 50,70, font_size);
+	});
+
 	// Textarea input listens to keypress events.
 	$(".textarea-home#input").keyup(function(){
 		var input_text = $(this).val();
-		parse(input_text, 50,70,10);
+		parse(input_text, 50,70, font_size, font_width);
 	});
 
 
