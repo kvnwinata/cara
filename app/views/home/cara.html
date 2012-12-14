@@ -1,0 +1,704 @@
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #textarea {
+        border: 1px solid #9C9898;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="textarea" width="1250" height="900"></canvas>
+    <script>
+      var canvas = document.getElementById('textarea');
+      var context = canvas.getContext('2d');
+
+      context.lineWidth = 2;
+      context.lineCap = 'round';
+      context.beginPath();
+      
+      var right_a = function(x, y, r) {
+        context.moveTo(x, y-r);
+        context.lineTo(x, y-2*r);
+        context.lineTo(x+r, y-2*r);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, 0);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+      
+      var left_k = function(x, y, r) {
+        context.moveTo(x, y);
+        context.lineTo(x, y-r);
+        context.arc(x+r, y-r, r, Math.PI, 0);
+        return x+3*r;
+      }
+      
+      var right_k = function(x, y, r) {
+        context.moveTo(x, y-r);
+        context.arc(x+r, y-r, r, Math.PI, 0);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+      
+      var right_p = function(x, y, r) {
+        context.moveTo(x, y-r);
+        context.arc(x+r, y-r, r, Math.PI, 0, true);
+        context.lineTo(x+2*r, y-2*r);
+        return x+3*r;
+      }
+      
+      var left_s = function(x, y, r) {
+        context.moveTo(x, y);
+        context.lineTo(x, y-r);
+        context.arc(x+r, y-r, r, Math.PI, 3*Math.PI/2);
+        context.lineTo(x+2*r, y-2*r);
+        context.lineTo(x+2*r, y-r);
+        return x+3*r;
+      }
+      
+      var _a = function(x, y, r) {
+        context.moveTo(x, y);
+        context.lineTo(x, y-r);
+        right_a(x, y, r);
+        return x+3*r;
+      }
+      
+      var _k = function(x, y, r) {
+        left_k(x, y, r);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+      
+      var _g = function(x, y, r) {
+        left_k(x, y, r);
+        right_p(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _q = function(x, y, r) {
+        x -= 0.5*r;
+        context.moveTo(x, y);
+        context.arc(x, y-r, r, Math.PI/2, 0, true);
+        right_k(x+r, y, r);
+        return x+4*r;
+      }
+      
+      var _c = function(x, y, r) {
+        _t(x, y, r);
+        right_k(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _j = function(x, y, r) {
+        left_s(x, y, r);
+        right_p(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _x = function(x, y, r) {
+        _p(x, y, r);
+        right_a(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _t = function(x, y, r) {
+        context.moveTo(x+2*r, y-r);
+        context.arc(x+r, y-r, r, 2*Math.PI, 0);
+        return x+3*r;
+      }
+      
+      var _d = function(x, y, r) {
+        _t(x, y, r);
+        right_p(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _n = function(x, y, r) {
+        context.moveTo(x+2*r, y-2*r);
+        context.lineTo(x+r, y-2*r);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+      
+      var _p = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x, y-r);
+        right_p(x, y, r);
+        return x+3*r;
+      }
+      
+      var _b = function(x, y, r) {
+        _p(x, y, r);
+        right_p(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _m = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x+2*r, y-2*r);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
+        context.lineTo(x+2*r, y-2*r);
+        return x+3*r;
+      }
+      
+      var _y = function(x, y, r) {
+        _r(x, y, r);
+        right_k(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _r = function(x, y, r) {
+        context.moveTo(x, y);
+        context.lineTo(x, y-2*r);
+        right_k(x, y, r);
+        return x+3*r;
+      }
+      
+      var _l = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x+2*r, y-2*r);
+        _n(x, y, r);
+        return x+3*r;
+      }
+      
+      var _w = function(x, y, r) {
+        _p(x, y, r);
+        right_k(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _s = function(x, y, r) {
+        left_s(x, y, r);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+      
+      var _h = function(x, y, r) {
+        x -= 0.5*r;
+        context.moveTo(x, y);
+        context.arc(x, y-r, r, Math.PI/2, 0, true);
+        right_a(x+r, y, r);
+        return x+4*r;
+      }
+      
+      var _f = function(x, y, r) {
+        context.moveTo(x+2*r, y-r);
+        context.lineTo(x+2*r, y+r);
+        context.arc(x+r, y+r, r, 0, Math.PI);
+      }
+      
+      var _fa = function(x, y, r) {
+        _a(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fk = function(x, y, r) {
+        _k(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fg = function(x, y, r) {
+        _g(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fq = function(x, y, r) {
+        _q(x, y, r);
+        _f(x+0.5*r, y, r);
+        return x+3.5*r;
+      }
+      
+      var _fc = function(x, y, r) {
+        _c(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fj = function(x, y, r) {
+        _j(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fx = function(x, y, r) {
+        _x(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _ft = function(x, y, r) {
+        _t(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fd = function(x, y, r) {
+        _d(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fn = function(x, y, r) {
+        context.moveTo(x+2*r, y-2*r);
+        context.lineTo(x+r, y-2*r);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+        context.arc(x+r, y+r, r, 3*Math.PI/2, Math.PI);
+        return x+3*r;
+      }
+      
+      var _fp = function(x, y, r) {
+        _p(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fb = function(x, y, r) {
+        _b(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fm = function(x, y, r) {
+        _m(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fy = function(x, y, r) {
+        _y(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fr = function(x, y, r) {
+        _r(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fl = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x+2*r, y-2*r);
+        _fn(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fw = function(x, y, r) {
+        _w(x, y, r);
+        _f(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _fs = function(x, y, r) {
+        _s(x, y, r);
+        _f(x, y, r);
+        return x+3*r;
+      }
+      
+      var _fh = function(x, y, r) {
+        _h(x, y, r);
+        _f(x+0.5*r, y, r);
+        return x+3.5*r;
+      }
+      
+      var _v = function(x, y, r) {
+        context.moveTo(x+2*r, y-r);
+        context.lineTo(x+2*r, y+r);
+        context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
+      }
+      
+      var _va = function(x, y, r) {
+        _a(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vk = function(x, y, r) {
+        _k(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vg = function(x, y, r) {
+        _g(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vq = function(x, y, r) {
+        _q(x, y, r);
+        _v(x+0.5*r, y, r);
+        return x+3.5*r;
+      }
+      
+      var _vc = function(x, y, r) {
+        _c(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vj = function(x, y, r) {
+        _j(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vx = function(x, y, r) {
+        _x(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vt = function(x, y, r) {
+        _t(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vd = function(x, y, r) {
+        _d(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vn = function(x, y, r) {
+        context.moveTo(x+2*r, y-2*r);
+        context.lineTo(x+r, y-2*r);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+        context.arc(x+r, y+r, r, 3*Math.PI/2, 0);
+        context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
+        return x+3*r;
+      }
+      
+      var _vp = function(x, y, r) {
+        _p(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vb = function(x, y, r) {
+        _b(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vm = function(x, y, r) {
+        _m(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vy = function(x, y, r) {
+        _y(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vr = function(x, y, r) {
+        _r(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vl = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x+2*r, y-2*r);
+        _vn(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vw = function(x, y, r) {
+        _w(x, y, r);
+        _v(x+2*r, y, r);
+        return x+5*r;
+      }
+      
+      var _vs = function(x, y, r) {
+        _s(x, y, r);
+        _v(x, y, r);
+        return x+3*r;
+      }
+      
+      var _vh = function(x, y, r) {
+        _h(x, y, r);
+        _v(x+0.5*r, y, r);
+        return x+3.5*r;
+      }
+      
+      var _z = function(x, y, r) {
+        var rcos = r*Math.cos(Math.PI/4);
+        var rcos = r/2;
+        context.moveTo(x-2*r-rcos, y-3*r+rcos);
+        context.lineTo(x-2*r+rcos, y-3*r-rcos);
+        return x;
+      }
+      
+      var _i = function(x, y, r) {
+        var rcos = r*Math.cos(Math.PI/4);
+        var rcos = r/2;
+        context.moveTo(x-2*r-rcos, y-3*r-rcos);
+        context.lineTo(x-2*r+rcos, y-3*r+rcos);
+        return x;
+      }
+      
+      var _o = function(x, y, r) {
+        var rcos = r*Math.cos(Math.PI/4);
+        var rcos = r/2;
+        context.moveTo(x-2*r-rcos, y+r+rcos);
+        context.lineTo(x-2*r+rcos, y+r-rcos);
+        return x;
+      }
+      
+      var _u = function(x, y, r) {
+        var rcos = r*Math.cos(Math.PI/4);
+        var rcos = r/2;
+        context.moveTo(x-2*r-rcos, y+r-rcos);
+        context.lineTo(x-2*r+rcos, y+r+rcos);
+        return x;
+      }
+      
+      var _e = function(x, y, r) {
+        context.moveTo(x-2*r+r/8, y-3*r);
+        context.arc(x-2*r, y-3*r, r/8, 0, 2*Math.PI);
+        return x;
+      }
+      
+      var _spasi = function(x, y, r) {
+        return x+2*r;
+      }
+      
+      var _sempang = function(x, y, r) {
+        context.moveTo(x, y-r);
+        context.lineTo(x+r, y-r);
+        return x+2*r;
+      }
+      
+      var _singkat = function(x, y, r) {
+        context.moveTo(x, y-3*r);
+        context.arc(x+r, y-3*r, r, Math.PI, Math.PI/2);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
+        return x+3*r;
+      }
+
+      var _carik = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x, y);
+        return x+r;
+      }
+
+      var _danda = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.lineTo(x, y+2*r);
+        return x+r;
+      }
+
+      var _bisah = function(x, y, r) {
+        context.moveTo(x, y-2*r);
+        context.arc(x, y-r, r, 3*Math.PI/2, Math.PI/2);
+        return x+2*r;
+      }
+
+      var _0 = function(x, y, r) {
+        context.moveTo(x, y-3*r);
+        context.arc(x+r, y-3*r, r, Math.PI, 0);
+        context.lineTo(x+2*r, y-r);
+        context.arc(x+r, y-r, r, 0, Math.PI);
+        context.lineTo(x, y-3*r);
+        return x+3*r;
+      }
+
+      var _1 = function(x, y, r) {
+        context.moveTo(x, y-3*r);
+        context.arc(x, y-4*r, r, Math.PI/2, 0, true);
+        context.lineTo(x+r, y);
+        return x+2.5*r;
+      }
+
+      var _2 = function(x, y, r) {
+        context.moveTo(x, y-3*r);
+        context.arc(x+r, y-3*r, r, Math.PI, Math.PI/2);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI, true);
+        context.lineTo(x, y);
+        context.lineTo(x+2*r, y);
+        return x+3*r;
+      }
+
+      var _3 = function(x, y, r) {
+        context.moveTo(x, y-3*r);
+        context.arc(x+r, y-3*r, r, Math.PI, Math.PI/2);
+        context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI);
+        return x+3*r;
+      }
+
+      var _5 = function(x, y, r) {
+        // context.moveTo(x+2*r, y-4*r);
+        // context.lineTo(x, y-4*r);
+        // context.lineTo(x, y-2*r);
+        // context.lineTo(x+r, y-2*r);
+        // context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI);
+        context.moveTo(x+2*r, y-4*r);
+        context.lineTo(x, y-4*r);
+        context.lineTo(x, y-2.5*r);
+        context.lineTo(x+r, y-2.5*r);
+        context.arc(x+r, y-1.5*r, r, 3*Math.PI/2, 0);
+        context.lineTo(x+2*r, y-r);
+        context.arc(x+r, y-r, r, 0, Math.PI);
+        return x+3*r;
+      }
+
+      var _6 = function(x, y, r) {
+        context.moveTo(x+2*r, y-3*r);
+        context.arc(x+r, y-3*r, r, 0, Math.PI, true);
+        context.lineTo(x, y-r);
+        context.arc(x+r, y-r, r, -Math.PI, Math.PI, true);
+        return x+3*r;
+      }
+
+      var _8 = function(x, y, r) {
+        context.moveTo(x+2*r, y-3*r);
+        context.arc(x+r, y-3*r, r, 0, 2*Math.PI, true);
+        context.moveTo(x+2*r, y-r);
+        context.arc(x+r, y-r, r, 0, 2*Math.PI, true);
+        return x+3*r;
+      }
+
+      var _9 = function(x, y, r) {
+        context.moveTo(x+2*r, y-3*r);
+        context.arc(x+r, y-3*r, r, 0, 2*Math.PI);
+        context.lineTo(x+2*r, y-r);
+        context.arc(x+r, y-r, r, 0, Math.PI);
+        return x+3*r;
+      }
+      
+      var ay = 70;
+      var ax = 50;
+      var ar = 6;
+      
+      var linespace = 7*ar;
+
+      var parse = function(text, ax, ay, ar) {
+        var c;
+        var orig_x = ax;
+        var state = 'a';
+        for (var i = 0; i < text.length; i++) {
+          c = text[i];
+          if (c == 'f') {
+            state = 'f';
+          } else if (c == 'v') {
+            state = 'v';
+          } else if (c == '/' || c == '\n') {
+            ax = orig_x;
+            ay += 7*ar;
+          } else {
+            ax = draw(c, state, ax, ay, ar);
+            state = 'a';
+          }
+        }
+      }
+
+      var draw = function(c, state, ax, ay, ar) {
+        switch (c) {
+          case 'a':
+            if (state == 'f') return _fa(ax, ay, ar); else if (state == 'v') return _va(ax, ay, ar); else return _a(ax, ay, ar);
+          case 'k':
+            if (state == 'f') return _fk(ax, ay, ar); else if (state == 'v') return _vk(ax, ay, ar); else return _k(ax, ay, ar);
+          case 'g':
+            if (state == 'f') return _fg(ax, ay, ar); else if (state == 'v') return _vg(ax, ay, ar); else return _g(ax, ay, ar);
+          case 'q':
+            if (state == 'f') return _fq(ax, ay, ar); else if (state == 'v') return _vq(ax, ay, ar); else return _q(ax, ay, ar);
+          case 'c':
+            if (state == 'f') return _fc(ax, ay, ar); else if (state == 'v') return _vc(ax, ay, ar); else return _c(ax, ay, ar);
+          case 'j':
+            if (state == 'f') return _fj(ax, ay, ar); else if (state == 'v') return _vj(ax, ay, ar); else return _j(ax, ay, ar);
+          case 'x':
+            if (state == 'f') return _fx(ax, ay, ar); else if (state == 'v') return _vx(ax, ay, ar); else return _x(ax, ay, ar);
+          case 't':
+            if (state == 'f') return _ft(ax, ay, ar); else if (state == 'v') return _vt(ax, ay, ar); else return _t(ax, ay, ar);
+          case 'd':
+            if (state == 'f') return _fd(ax, ay, ar); else if (state == 'v') return _vd(ax, ay, ar); else return _d(ax, ay, ar);
+          case 'n':
+            if (state == 'f') return _fn(ax, ay, ar); else if (state == 'v') return _vn(ax, ay, ar); else return _n(ax, ay, ar);
+          case 'p':
+            if (state == 'f') return _fp(ax, ay, ar); else if (state == 'v') return _vp(ax, ay, ar); else return _p(ax, ay, ar);
+          case 'b':
+            if (state == 'f') return _fb(ax, ay, ar); else if (state == 'v') return _vb(ax, ay, ar); else return _b(ax, ay, ar);
+          case 'm':
+            if (state == 'f') return _fm(ax, ay, ar); else if (state == 'v') return _vm(ax, ay, ar); else return _m(ax, ay, ar);
+          case 'y':
+            if (state == 'f') return _fy(ax, ay, ar); else if (state == 'v') return _vy(ax, ay, ar); else return _y(ax, ay, ar);
+          case 'r':
+            if (state == 'f') return _fr(ax, ay, ar); else if (state == 'v') return _vr(ax, ay, ar); else return _r(ax, ay, ar);
+          case 'l':
+            if (state == 'f') return _fl(ax, ay, ar); else if (state == 'v') return _vl(ax, ay, ar); else return _l(ax, ay, ar);
+          case 'w':
+            if (state == 'f') return _fw(ax, ay, ar); else if (state == 'v') return _vw(ax, ay, ar); else return _w(ax, ay, ar);
+          case 's':
+            if (state == 'f') return _fs(ax, ay, ar); else if (state == 'v') return _vs(ax, ay, ar); else return _s(ax, ay, ar);
+          case 'h':
+            if (state == 'f') return _fh(ax, ay, ar); else if (state == 'v') return _vh(ax, ay, ar); else return _h(ax, ay, ar);
+          case 'z':
+            return _z(ax, ay, ar);
+          case 'i':
+            return _i(ax, ay, ar);
+          case 'o':
+            return _o(ax, ay, ar);
+          case 'u':
+            return _u(ax, ay, ar);
+          case 'e':
+            return _e(ax, ay, ar);
+          case ' ':
+            return _spasi(ax, ay, ar);
+          case "'":
+            return _bisah(ax, ay, ar);
+          case '-':
+            return _sempang(ax, ay, ar);
+          case '#':
+            return _singkat(ax, ay, ar);
+          case '.':
+            return _danda(ax, ay, ar);
+          case ',':
+            return _carik(ax, ay, ar);
+          case '!':
+            ax = _danda(ax, ay, ar);
+            return _carik(ax, ay, ar);
+          case '?':
+            ax = _carik(ax, ay, ar);
+            return _danda(ax, ay, ar);
+          case '0':
+            return _0(ax, ay, ar);
+          case '1':
+            return _1(ax, ay, ar);
+          case '2':
+            return _2(ax, ay, ar);
+          case '3':
+            return _3(ax, ay, ar);
+          case '4':
+            return _4(ax, ay, ar);
+          case '5':
+            return _5(ax, ay, ar);
+          case '6':
+            return _6(ax, ay, ar);
+          case '7':
+            return _7(ax, ay, ar);
+          case '8':
+            return _8(ax, ay, ar);
+          case '9':
+            return _9(ax, ay, ar);
+        }
+      }
+
+      parse("01235689 !/kerfaytfn yfq divpipifn aolzfh hifkmft kebijfksnafn ,/dlfm fpemus'wrtfn dfn fpewkilfn ./anfk-# ?", 50, 70, 10);
+
+      context.strokeStyle = "000000";
+      context.stroke();
+  
+    </script>
+  </body>
+</html>
