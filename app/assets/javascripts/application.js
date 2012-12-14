@@ -595,9 +595,13 @@ $(document).ready(function(){
 
     var linespace = 7*ar;
 
-    var parse = function(text, ax, ay, ar, font_width) {
-    	context.lineWidth = font_width;
+    var parse = function(text, ax, ay, ar) {
     	canvas.width = canvas.width;
+    	context.lineWidth = font_width;
+    	context.lineCap = 'round';
+        context.strokeStyle = font_color;
+
+    	context.beginPath();
     	var c;
     	var orig_x = ax;
     	var state = 'a';
@@ -615,7 +619,6 @@ $(document).ready(function(){
     			state = 'a';
     		}
     	}
-    	context.strokeStyle = "000000";
     	context.stroke();
     }
 
@@ -728,32 +731,31 @@ $(document).ready(function(){
     $("#font-size").change(function(){
     	font_size = parseInt($(this).val());
         var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50,70, font_size);
+		parse(input_text, 50, 70, font_size);
     });
 
     $("#font-width").change(function(){
     	font_width = parseInt($(this).val());
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50,70, font_size);
+		parse(input_text, 50, 70, font_size);
     });
 
     $("#font-style").change(function(){
     	font_style = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50,70, font_size);
+		parse(input_text, 50, 70, font_size);
     });
 
     $("#font-color").change(function(){
     	font_color = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text, 50,70, font_size);
+		parse(input_text, 50, 70, font_size);
 	});
 
 	// Textarea input listens to keypress events.
 	$(".textarea-home#input").keyup(function(){
 		var input_text = $(this).val();
-		parse(input_text, 50,70, font_size, font_width);
+		parse(input_text, 50, 70, font_size);
 	});
-
 
 });
