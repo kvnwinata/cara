@@ -74,13 +74,15 @@ $(document).ready(function(){
 	}
 
 	var left_s = function(x, y, r) {
-		context.moveTo(x, y);
-		context.lineTo(x, y-r);
-		context.arc(x+r, y-r, r, Math.PI, 3*Math.PI/2);
 		if (font_style == 'serif') {
+			context.moveTo(x+r, y);
+			context.arc(x+r, y-r, r, Math.PI/2, 3*Math.PI/2);
 			context.lineTo(x+2.5*r, y-2*r);
 			context.moveTo(x+2*r, y-2*r);
 		} else {
+			context.moveTo(x, y);
+			context.lineTo(x, y-r);
+			context.arc(x+r, y-r, r, Math.PI, 3*Math.PI/2);
 			context.lineTo(x+2*r, y-2*r);
 		}
 		context.lineTo(x+2*r, y-r);
@@ -150,8 +152,12 @@ $(document).ready(function(){
 	var _n = function(x, y, r) {
 		context.moveTo(x+2*r, y-2*r);
 		context.lineTo(x+r, y-2*r);
-		context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
-		context.lineTo(x+2*r, y);
+		if (font_style == 'serif') {
+			context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
+		} else {
+			context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
+			context.lineTo(x+2*r, y);
+		}
 		return x+3*r;
 	}
 
@@ -221,11 +227,7 @@ $(document).ready(function(){
 	}
 
 	var _f = function(x, y, r) {
-		if (font_style == 'serif') {
-			context.moveTo(x+2*r, y);
-		} else {
-			context.moveTo(x+2*r, y-r);
-		}
+		context.moveTo(x+2*r, y-r);
 		context.lineTo(x+2*r, y+r);
 		context.arc(x+r, y+r, r, 0, Math.PI);
 	}
@@ -353,11 +355,7 @@ $(document).ready(function(){
 	}
 
 	var _v = function(x, y, r) {
-		if (font_style == 'serif') {
-			context.moveTo(x+2*r, y);
-		} else {
-			context.moveTo(x+2*r, y-r);
-		}
+		context.moveTo(x+2*r, y-r);
 		context.lineTo(x+2*r, y+r);
 		context.arc(x+3*r, y+r, r, Math.PI, Math.PI/2, true);
 	}
@@ -596,6 +594,7 @@ $(document).ready(function(){
 		context.lineTo(x+1.5*r, y-4*r);
 		context.moveTo(x+1.5*r, y-4*r);
 		context.lineTo(x, y-r);
+		context.moveTo(x, y-r);
 		context.lineTo(x+2*r, y-r);
 		return x+3*r;
 	}
@@ -621,6 +620,7 @@ $(document).ready(function(){
     var _7 = function(x, y, r) {
 		context.moveTo(x, y-4*r);
 		context.lineTo(x+2*r, y-4*r);
+		context.moveTo(x+2*r, y-4*r);
 		context.lineTo(x+0.5*r, y);
 		return x+3*r;
 	}
@@ -641,17 +641,13 @@ $(document).ready(function(){
     	return x+3*r;
     }
 
-    var ay = 70;
-    var ax = 50;
-    var ar = 6;
-
-    var linespace = 7*ar;
 
     var parse = function(text) {
     	canvas.width = canvas.width;
     	context.lineWidth = font_width_abs;
     	context.lineCap = 'round';
         context.strokeStyle = font_color;
+        context.fillStyle = font_color;
 
     	context.beginPath();
     	var c;
@@ -668,11 +664,11 @@ $(document).ready(function(){
     			state = 'f';
     		} else if (c == 'v') {
     			state = 'v';
-    		} else if (c == '/' || c == '\n') {
+    		} else if (c == '\n') {
     			ax = orig_x;
     			ay += 7*ar;
     		} else {
-    			if (ax > canvas.width - ar*5) {
+    			if (ax > canvas.width - (char_width(c)+0.5)*ar) {
     				ax = orig_x;
     				ay += 7*ar;
     			}
@@ -681,99 +677,160 @@ $(document).ready(function(){
     		}
     	}
     	context.stroke();
+
+    	return ay + 3*ar;
     }
 
     var draw = function(c, state, ax, ay, ar) {
     	switch (c) {
     		case 'a':
-    		if (state == 'f') return _fa(ax, ay, ar); else if (state == 'v') return _va(ax, ay, ar); else return _a(ax, ay, ar);
+    			if (state == 'f') return _fa(ax, ay, ar); else if (state == 'v') return _va(ax, ay, ar); else return _a(ax, ay, ar);
     		case 'k':
-    		if (state == 'f') return _fk(ax, ay, ar); else if (state == 'v') return _vk(ax, ay, ar); else return _k(ax, ay, ar);
+    			if (state == 'f') return _fk(ax, ay, ar); else if (state == 'v') return _vk(ax, ay, ar); else return _k(ax, ay, ar);
     		case 'g':
-    		if (state == 'f') return _fg(ax, ay, ar); else if (state == 'v') return _vg(ax, ay, ar); else return _g(ax, ay, ar);
+    			if (state == 'f') return _fg(ax, ay, ar); else if (state == 'v') return _vg(ax, ay, ar); else return _g(ax, ay, ar);
     		case 'q':
-    		if (state == 'f') return _fq(ax, ay, ar); else if (state == 'v') return _vq(ax, ay, ar); else return _q(ax, ay, ar);
+    			if (state == 'f') return _fq(ax, ay, ar); else if (state == 'v') return _vq(ax, ay, ar); else return _q(ax, ay, ar);
     		case 'c':
-    		if (state == 'f') return _fc(ax, ay, ar); else if (state == 'v') return _vc(ax, ay, ar); else return _c(ax, ay, ar);
+    			if (state == 'f') return _fc(ax, ay, ar); else if (state == 'v') return _vc(ax, ay, ar); else return _c(ax, ay, ar);
     		case 'j':
-    		if (state == 'f') return _fj(ax, ay, ar); else if (state == 'v') return _vj(ax, ay, ar); else return _j(ax, ay, ar);
+    			if (state == 'f') return _fj(ax, ay, ar); else if (state == 'v') return _vj(ax, ay, ar); else return _j(ax, ay, ar);
     		case 'x':
-    		if (state == 'f') return _fx(ax, ay, ar); else if (state == 'v') return _vx(ax, ay, ar); else return _x(ax, ay, ar);
+    			if (state == 'f') return _fx(ax, ay, ar); else if (state == 'v') return _vx(ax, ay, ar); else return _x(ax, ay, ar);
     		case 't':
-    		if (state == 'f') return _ft(ax, ay, ar); else if (state == 'v') return _vt(ax, ay, ar); else return _t(ax, ay, ar);
+    			if (state == 'f') return _ft(ax, ay, ar); else if (state == 'v') return _vt(ax, ay, ar); else return _t(ax, ay, ar);
     		case 'd':
-    		if (state == 'f') return _fd(ax, ay, ar); else if (state == 'v') return _vd(ax, ay, ar); else return _d(ax, ay, ar);
+    			if (state == 'f') return _fd(ax, ay, ar); else if (state == 'v') return _vd(ax, ay, ar); else return _d(ax, ay, ar);
     		case 'n':
-    		if (state == 'f') return _fn(ax, ay, ar); else if (state == 'v') return _vn(ax, ay, ar); else return _n(ax, ay, ar);
+    			if (state == 'f') return _fn(ax, ay, ar); else if (state == 'v') return _vn(ax, ay, ar); else return _n(ax, ay, ar);
     		case 'p':
-    		if (state == 'f') return _fp(ax, ay, ar); else if (state == 'v') return _vp(ax, ay, ar); else return _p(ax, ay, ar);
+    			if (state == 'f') return _fp(ax, ay, ar); else if (state == 'v') return _vp(ax, ay, ar); else return _p(ax, ay, ar);
     		case 'b':
-    		if (state == 'f') return _fb(ax, ay, ar); else if (state == 'v') return _vb(ax, ay, ar); else return _b(ax, ay, ar);
+    			if (state == 'f') return _fb(ax, ay, ar); else if (state == 'v') return _vb(ax, ay, ar); else return _b(ax, ay, ar);
     		case 'm':
-    		if (state == 'f') return _fm(ax, ay, ar); else if (state == 'v') return _vm(ax, ay, ar); else return _m(ax, ay, ar);
+    			if (state == 'f') return _fm(ax, ay, ar); else if (state == 'v') return _vm(ax, ay, ar); else return _m(ax, ay, ar);
     		case 'y':
-    		if (state == 'f') return _fy(ax, ay, ar); else if (state == 'v') return _vy(ax, ay, ar); else return _y(ax, ay, ar);
+    			if (state == 'f') return _fy(ax, ay, ar); else if (state == 'v') return _vy(ax, ay, ar); else return _y(ax, ay, ar);
     		case 'r':
-    		if (state == 'f') return _fr(ax, ay, ar); else if (state == 'v') return _vr(ax, ay, ar); else return _r(ax, ay, ar);
+    			if (state == 'f') return _fr(ax, ay, ar); else if (state == 'v') return _vr(ax, ay, ar); else return _r(ax, ay, ar);
     		case 'l':
-    		if (state == 'f') return _fl(ax, ay, ar); else if (state == 'v') return _vl(ax, ay, ar); else return _l(ax, ay, ar);
+    			if (state == 'f') return _fl(ax, ay, ar); else if (state == 'v') return _vl(ax, ay, ar); else return _l(ax, ay, ar);
     		case 'w':
-    		if (state == 'f') return _fw(ax, ay, ar); else if (state == 'v') return _vw(ax, ay, ar); else return _w(ax, ay, ar);
+    			if (state == 'f') return _fw(ax, ay, ar); else if (state == 'v') return _vw(ax, ay, ar); else return _w(ax, ay, ar);
     		case 's':
-    		if (state == 'f') return _fs(ax, ay, ar); else if (state == 'v') return _vs(ax, ay, ar); else return _s(ax, ay, ar);
+    			if (state == 'f') return _fs(ax, ay, ar); else if (state == 'v') return _vs(ax, ay, ar); else return _s(ax, ay, ar);
     		case 'h':
-    		if (state == 'f') return _fh(ax, ay, ar); else if (state == 'v') return _vh(ax, ay, ar); else return _h(ax, ay, ar);
+    			if (state == 'f') return _fh(ax, ay, ar); else if (state == 'v') return _vh(ax, ay, ar); else return _h(ax, ay, ar);
     		case 'z':
-    		return _z(ax, ay, ar);
+    			return _z(ax, ay, ar);
     		case 'i':
-    		return _i(ax, ay, ar);
+    			return _i(ax, ay, ar);
     		case 'o':
-    		return _o(ax, ay, ar);
+    			return _o(ax, ay, ar);
     		case 'u':
-    		return _u(ax, ay, ar);
+    			return _u(ax, ay, ar);
     		case 'e':
-    		return _e(ax, ay, ar);
+    			return _e(ax, ay, ar);
     		case ' ':
-    		return _spasi(ax, ay, ar);
+    			return _spasi(ax, ay, ar);
     		case "'":
-    		return _bisah(ax, ay, ar);
+    			return _bisah(ax, ay, ar);
     		case '-':
-    		return _sempang(ax, ay, ar);
+    			return _sempang(ax, ay, ar);
     		case '#':
-    		return _singkat(ax, ay, ar);
+    			return _singkat(ax, ay, ar);
     		case '.':
-    		return _danda(ax, ay, ar);
+    			return _danda(ax, ay, ar);
     		case ',':
-    		return _carik(ax, ay, ar);
+    			return _carik(ax, ay, ar);
     		case '!':
-    		ax = _danda(ax, ay, ar);
-    		return _carik(ax, ay, ar);
+    			ax = _danda(ax, ay, ar);
+    			return _carik(ax, ay, ar);
     		case '?':
-    		ax = _carik(ax, ay, ar);
-    		return _danda(ax, ay, ar);
+    			ax = _carik(ax, ay, ar);
+    			return _danda(ax, ay, ar);
     		case '0':
-    		return _0(ax, ay, ar);
+    			return _0(ax, ay, ar);
     		case '1':
-    		return _1(ax, ay, ar);
+    			return _1(ax, ay, ar);
     		case '2':
-    		return _2(ax, ay, ar);
+    			return _2(ax, ay, ar);
     		case '3':
-    		return _3(ax, ay, ar);
+    			return _3(ax, ay, ar);
     		case '4':
-    		return _4(ax, ay, ar);
+    			return _4(ax, ay, ar);
     		case '5':
-    		return _5(ax, ay, ar);
+    			return _5(ax, ay, ar);
     		case '6':
-    		return _6(ax, ay, ar);
+    			return _6(ax, ay, ar);
     		case '7':
-    		return _7(ax, ay, ar);
+    			return _7(ax, ay, ar);
     		case '8':
-    		return _8(ax, ay, ar);
+    			return _8(ax, ay, ar);
     		case '9':
-    		return _9(ax, ay, ar);
+    			return _9(ax, ay, ar);
     		default:
-    		return ax;
+    			return ax;
     	}
+    }
+
+    var char_width = function(c) {
+    	switch (c) {
+    		case '.':
+    		case ',':
+    			return 1;
+    		case ' ':
+    		case "'":
+    		case '-':
+    		case '!':
+    		case '?':
+    			return 2;
+    		case '1':
+    			return 2.5;
+    		case 'a':
+    		case 'k':
+    		case 't':
+    		case 'n':
+    		case 'p':
+    		case 'm':
+    		case 'r':
+    		case 'l':
+    		case 's':
+    		case '#':
+    		case '0':
+    		case '2':
+    		case '3':
+    		case '4':
+    		case '5':
+    		case '6':
+    		case '7':
+    		case '8':
+    		case '9':
+    			return 3;
+    		case 'q':
+    		case 'h':
+    			return 3.5;
+    		case 'g':
+    		case 'c':
+    		case 'j':
+    		case 'x':
+    		case 'd':
+    		case 'b':
+    		case 'y':
+    		case 'w':
+    			return 5;
+    		default:
+    			return 0;
+    	}
+    }
+
+    var parse_adjust = function(text) {
+    	var text_height = parse(text);
+		if ((text_height > min_height && text_height != canvas.height) || 
+			(text_height <= min_height && canvas.height != min_height)) {
+			canvas.height = Math.max(text_height, min_height);
+			parse(text); 
+		} 
     }
 
     // Default values
@@ -782,6 +839,7 @@ $(document).ready(function(){
     var font_width = 2;
     var font_width_abs = font_size/10 * font_width;
     var font_color = 'black';
+    var min_height = canvas.height;
 
     // Sets the default values:
     $("#font-size").val(font_size);
@@ -794,32 +852,32 @@ $(document).ready(function(){
     	font_size = parseInt($(this).val());
     	font_width_abs = font_size/10 * font_width;
         var input_text = $(".textarea-home#input").val();
-		parse(input_text);
+		parse_adjust(input_text);
     });
 
     $("#font-width").change(function(){
     	font_width = parseInt($(this).val());
     	font_width_abs = font_size/10 * font_width;
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text);
+		parse_adjust(input_text);
     });
 
     $("#font-style").change(function(){
     	font_style = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text);
+		parse_adjust(input_text);
     });
 
     $("#font-color").change(function(){
     	font_color = $(this).val();
     	var input_text = $(".textarea-home#input").val();
-		parse(input_text);
+		parse_adjust(input_text);
 	});
 
 	// Textarea input listens to keypress events.
 	$(".textarea-home#input").keyup(function(){
 		var input_text = $(this).val();
-		parse(input_text);
+		parse_adjust(input_text);
 	});
 
 });

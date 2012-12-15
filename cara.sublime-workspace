@@ -5,7 +5,7 @@
 		[
 			[
 				"font",
-				"font_color"
+				"font_style"
 			],
 			[
 				"line",
@@ -309,8 +309,8 @@
 	"file_history":
 	[
 		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
-		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
 		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
+		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/application.css",
 		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
 		"/Users/KW/Documents/git/cara/config/routes.rb",
@@ -454,6 +454,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"font_width",
 			"font_size",
 			"beginPath",
 			"befgin",
