@@ -641,6 +641,9 @@ $(document).ready(function(){
     	return x+3*r;
     }
 
+    var vowels = ['z', 'i', 'o', 'u', 'e'];
+    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9'];
+    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
 
     var parse = function(text) {
     	canvas.width = canvas.width;
@@ -657,6 +660,7 @@ $(document).ready(function(){
     	var ax = ar*2;
     	var ay = ar*5;
     	var orig_x = ax;
+    	var prevChar = ' ';
 
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
@@ -668,6 +672,10 @@ $(document).ready(function(){
     			ax = orig_x;
     			ay += 7*ar;
     		} else {
+    			if (font_style == 'serif' && vowels.indexOf(c) == -1) {
+    				ax += kern(prevChar, c)*ar;
+    				prevChar = c;
+    			}
     			if (ax > canvas.width - (char_width(c)+0.5)*ar) {
     				ax = orig_x;
     				ay += 7*ar;
@@ -679,6 +687,21 @@ $(document).ready(function(){
     	context.stroke();
 
     	return ay + 3*ar;
+    }
+
+    var kern = function(prevChar, c) {
+    	//console.log(prevChar, c);
+    	if (prevChar == 's') {
+    		if (s_phobic.indexOf(c) != -1) {
+    			return 0.5;
+    		}
+    	}
+    	if (c == 'a') {
+    		if (a_phobic.indexOf(prevChar) != -1) {
+    			return 0.5;
+    		}
+    	}
+    	return 0;
     }
 
     var draw = function(c, state, ax, ay, ar) {
