@@ -642,7 +642,7 @@ $(document).ready(function(){
     }
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
-    var a_phobic = ['g', 'j', 'd', 'p', 'b', 'm', '.', ',', '?', '!', '0', '5', '9'];
+    var a_phobic = ['g', 'j', 'd', 'p', 'b', 'm', 's', '.', ',', '?', '!', '0', '5', '9'];
     var s_phobic = ['a', 'x', 'p', 'b', 'y', 'r', 'w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
 
     var parse = function(text) {
@@ -690,18 +690,18 @@ $(document).ready(function(){
     }
 
     var kern = function(prevChar, c) {
-    	//console.log(prevChar, c);
+    	k = 0;
     	if (prevChar == 's') {
     		if (s_phobic.indexOf(c) != -1) {
-    			return 0.5;
+    			k += 0.25;
     		}
     	}
     	if (c == 'a') {
     		if (a_phobic.indexOf(prevChar) != -1) {
-    			return 0.5;
+    			k += 0.25;
     		}
     	}
-    	return 0;
+    	return k;
     }
 
     var draw = function(c, state, ax, ay, ar) {
