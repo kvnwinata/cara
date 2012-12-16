@@ -642,8 +642,8 @@ $(document).ready(function(){
     }
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
-    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9'];
-    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
+    var a_phobic = ['g', 'j', 'd', 'p', 'b', 'm', '.', ',', '?', '!', '0', '5', '9'];
+    var s_phobic = ['a', 'x', 'p', 'b', 'y', 'r', 'w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
 
     var parse = function(text) {
     	canvas.width = canvas.width;
