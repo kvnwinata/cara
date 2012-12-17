@@ -271,7 +271,7 @@
 			"file": "app/assets/javascripts/application.js",
 			"settings":
 			{
-				"buffer_size": 20558,
+				"buffer_size": 20534,
 				"line_ending": "Unix"
 			}
 		},
@@ -580,15 +580,15 @@
 					"file": "app/assets/javascripts/application.js",
 					"settings":
 					{
-						"buffer_size": 20558,
+						"buffer_size": 20534,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13940,
-								13940
+								12810,
+								12810
 							]
 						],
 						"settings":
@@ -596,8 +596,8 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 15.0,
-						"translation.y": 11305.0,
+						"translation.x": 0.0,
+						"translation.y": 10679.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

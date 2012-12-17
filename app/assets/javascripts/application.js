@@ -903,4 +903,8 @@ $(document).ready(function(){
 		parse_adjust(input_text);
 	});
 
+	$("#save_button").click(function(){
+		$(this).href
+	});
+
 });
