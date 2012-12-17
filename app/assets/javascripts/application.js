@@ -904,7 +904,7 @@ $(document).ready(function(){
 	});
 
 	$("#save_button").click(function(){
-		$(this).href
+		$(this).attr('href', canvas.toDataURL());
 	});
 
 });
