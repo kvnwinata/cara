@@ -271,7 +271,7 @@
 			"file": "app/assets/javascripts/application.js",
 			"settings":
 			{
-				"buffer_size": 20534,
+				"buffer_size": 20592,
 				"line_ending": "Unix"
 			}
 		},
@@ -279,7 +279,7 @@
 			"file": "app/views/home/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 1823,
+				"buffer_size": 1904,
 				"line_ending": "Unix"
 			}
 		},
@@ -580,15 +580,15 @@
 					"file": "app/assets/javascripts/application.js",
 					"settings":
 					{
-						"buffer_size": 20534,
+						"buffer_size": 20592,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12810,
-								12810
+								20582,
+								20582
 							]
 						],
 						"settings":
@@ -597,7 +597,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10679.0,
+						"translation.y": 14556.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -607,15 +607,15 @@
 					"file": "app/views/home/index.html.erb",
 					"settings":
 					{
-						"buffer_size": 1823,
+						"buffer_size": 1904,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1797,
-								1797
+								1849,
+								1849
 							]
 						],
 						"settings":
@@ -624,7 +624,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 982.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
