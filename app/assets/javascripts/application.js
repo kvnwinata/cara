@@ -656,11 +656,13 @@ $(document).ready(function(){
     	var c;
     	var state = 'a';
 
-    	var ar = font_size;
+    	var ar = font_size/2;
     	var ax = ar*2;
     	var ay = ar*5;
     	var orig_x = ax;
     	var prevChar = ' ';
+    	var wordStartIdx = 0;
+    	var wordStartPos = ax;
 
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
@@ -671,12 +673,25 @@ $(document).ready(function(){
     		} else if (c == '\n') {
     			ax = orig_x;
     			ay += 7*ar;
+    		} else if (c == ' ') {
+    			wordStartIdx = i+1;
+    			prevChar = ' ';
+    			ax = draw(' ', state, ax, ay, ar);
+    			wordStartPos = ax;
     		} else {
     			if (font_style == 'serif' && vowels.indexOf(c) == -1) {
     				ax += kern(prevChar, c)*ar;
     				prevChar = c;
     			}
-    			if (ax > canvas.width - (char_width(c)+0.5)*ar) {
+    			if (ax > canvas.width - (char_width(c)+0.5)*ar) { // line break
+    				if (wordStartPos > orig_x) { // break whole word
+    					context.stroke();
+    					context.clearRect(wordStartPos-ar, ay-4.5*ar, canvas.width-wordStartPos+ar, 7*ar);
+    					i = wordStartIdx;
+    					c = text[i];
+    					wordStartPos = orig_x;
+    					context.beginPath();
+    				}
     				ax = orig_x;
     				ay += 7*ar;
     			}
@@ -858,9 +873,9 @@ $(document).ready(function(){
 
     // Default values
     var font_style = 'sans-serif';
-    var font_size = 10;
-    var font_width = 2;
-    var font_width_abs = font_size/10 * font_width;
+    var font_size = 14;
+    var font_width = 3;
+    var font_width_abs = font_size/20 * font_width;
     var font_color = 'black';
     var min_height = canvas.height;
 
@@ -873,14 +888,14 @@ $(document).ready(function(){
 
     $("#font-size").change(function(){
     	font_size = parseInt($(this).val());
-    	font_width_abs = font_size/10 * font_width;
+    	font_width_abs = font_size/20 * font_width;
         var input_text = $(".textarea-home#input").val();
 		parse_adjust(input_text);
     });
 
     $("#font-width").change(function(){
     	font_width = parseInt($(this).val());
-    	font_width_abs = font_size/10 * font_width;
+    	font_width_abs = font_size/20 * font_width;
     	var input_text = $(".textarea-home#input").val();
 		parse_adjust(input_text);
     });
