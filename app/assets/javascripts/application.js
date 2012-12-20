@@ -775,7 +775,7 @@ $(document).ready(function(){
     			return _bisah(ax, ay, ar);
     		case '-':
     			return _sempang(ax, ay, ar);
-    		case '#':
+    		case '/':
     			return _singkat(ax, ay, ar);
     		case '.':
     			return _danda(ax, ay, ar);
