@@ -687,10 +687,10 @@ $(document).ready(function(){
     				if (wordStartPos > orig_x) { // break whole word
     					context.stroke();
     					context.clearRect(wordStartPos-ar, ay-4.5*ar, canvas.width-wordStartPos+ar, 7*ar);
-    					i = wordStartIdx;
-    					c = text[i];
+    					i = wordStartIdx-1;
     					wordStartPos = orig_x;
     					context.beginPath();
+    					continue;
     				}
     				ax = orig_x;
     				ay += 7*ar;
