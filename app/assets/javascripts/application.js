@@ -701,9 +701,9 @@ $(document).ready(function(){
     			ax = orig_x;
     			ay += 7*ar;
     		} else if (c == ' ') {
-    			wordStartIdx = i+1;
     			prevChar = ' ';
     			ax = draw(' ', state, ax, ay, ar);
+    			wordStartIdx = i+1;
     			wordStartPos = ax;
     		} else {
     			if (font_style == 'serif' && vowels.indexOf(c) == -1) {
@@ -727,6 +727,10 @@ $(document).ready(function(){
     			}
     			ax = draw(c, state, ax, ay, ar);
     			state = 'a';
+    			if (c == '-') { // allow break after sempang
+    				wordStartIdx = i+1;
+    				wordStartPos = ax;
+    			}
     		}
     	}
     	context.stroke();
