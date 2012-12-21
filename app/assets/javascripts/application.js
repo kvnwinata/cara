@@ -688,8 +688,11 @@ $(document).ready(function(){
     					context.stroke();
     					context.clearRect(wordStartPos-ar, ay-4.5*ar, canvas.width-wordStartPos+ar, 7*ar);
     					i = wordStartIdx-1;
+    					state = 'a';
     					wordStartPos = orig_x;
     					context.beginPath();
+    					ax = orig_x;
+    					ay += 7*ar;
     					continue;
     				}
     				ax = orig_x;
