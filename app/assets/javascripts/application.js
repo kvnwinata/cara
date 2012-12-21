@@ -642,8 +642,33 @@ $(document).ready(function(){
     }
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
+    var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
     var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9'];
     var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
+
+    // moves 'f' and 'v'
+    var reposition = function(text) {
+    	newText = text.split("");
+    	prevCons = null;
+    	for (var i = 0; i < newText.length; i++) {
+    		c = newText[i];
+    		if (c == ' ') {
+    			prevCons = null;
+    		} else if (consonants.indexOf(c) != -1) {
+    			prevCons = i;
+    		} else if (c == 'f' || c == 'v') {
+    			if (prevCons == null) {
+    				newText[i] = '_'; // remove it
+    			} else {
+    				for (var j = i; j > prevCons; j--) {
+    					newText[j] = newText[j-1]; 
+    				}
+    				newText[prevCons] = c; // move it to front of cons
+    			}
+    		}
+    	}
+    	return newText.join("");
+    }
 
     var parse = function(text) {
     	canvas.width = canvas.width;
@@ -663,6 +688,8 @@ $(document).ready(function(){
     	var prevChar = ' ';
     	var wordStartIdx = 0;
     	var wordStartPos = ax;
+
+    	text = reposition(text);
 
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
