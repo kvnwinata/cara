@@ -837,7 +837,7 @@ $(document).ready(function(){
     		case 'r':
     		case 'l':
     		case 's':
-    		case '#':
+    		case '/':
     		case '0':
     		case '2':
     		case '3':
