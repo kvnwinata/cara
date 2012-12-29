@@ -267,38 +267,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/assets/javascripts/application.js",
-			"settings":
-			{
-				"buffer_size": 20592,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/home/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 1904,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/application.css",
-			"settings":
-			{
-				"buffer_size": 792,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/home.css",
-			"settings":
-			{
-				"buffer_size": 174,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -340,10 +308,11 @@
 	},
 	"file_history":
 	[
+		"/Users/KW/Documents/git/cara/cara.sublime-project",
 		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
-		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/application.css",
+		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
 		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
 		"/Users/KW/Documents/git/cara/config/routes.rb",
 		"/Users/KW/Documents/git/cara/app/views/layouts/_footer.html.erb",
@@ -466,8 +435,7 @@
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/controllers/questions_controller.rb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/show.js",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/answer.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/question.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/index.html.erb"
+		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/question.rb"
 	],
 	"find":
 	{
@@ -572,115 +540,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/assets/javascripts/application.js",
-					"settings":
-					{
-						"buffer_size": 20592,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								20582,
-								20582
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 14556.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/home/index.html.erb",
-					"settings":
-					{
-						"buffer_size": 1904,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1849,
-								1849
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 982.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/assets/stylesheets/application.css",
-					"settings":
-					{
-						"buffer_size": 792,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								653,
-								653
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/assets/stylesheets/home.css",
-					"settings":
-					{
-						"buffer_size": 174,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								168,
-								168
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

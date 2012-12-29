@@ -556,6 +556,24 @@ $(document).ready(function(){
 		return x+2*r;
 	}
 
+	var _kbuka = function(x, y, r) {
+		context.moveTo(x, y-2*r);
+		context.lineTo(x, y+2*r);
+		context.moveTo(x, y+2*r);
+		context.lineTo(x+1.5*r, y+2*r);
+		return x+2*r;
+	}
+
+	var _ktutup = function(x, y, r) {
+		x -= 0.5*r
+		context.moveTo(x, y-4*r);
+		context.lineTo(x+1.5*r, y-4*r);
+		context.moveTo(x+1.5*r, y-4*r);
+		context.lineTo(x+1.5*r, y);
+		return x+2.5*r;
+	}
+
+
 	var _0 = function(x, y, r) {
 		context.moveTo(x, y-3*r);
 		context.arc(x+r, y-3*r, r, Math.PI, 0);
@@ -643,8 +661,8 @@ $(document).ready(function(){
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
     var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
-    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9'];
-    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', 'h', '.', ',', '?', '!', "'", '0', '5', '6'];
+    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']'];
+    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', 'h', '.', ',', '?', '!', "'", '0', '5', '6', '['];
 
     // moves 'f' and 'v'
     var reposition = function(text) {
@@ -671,6 +689,28 @@ $(document).ready(function(){
     }
 
     var parse = function(text) {
+
+    	if (text == '***') { //sample text
+			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\npvebukanf\n\n\
+				bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
+				pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
+				dfn peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
+				svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
+				ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
+				, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
+				aolzhf keaiqinnf luhurf , supy bfekehidupnf kebvsanf yqf bzbsf , mk rafytf \
+				avidonzsiy mextknf deqnf aini kemfedzkanfx .\n\nkemudiynf dripd aitu avutukf \
+				mvebvetukf suwtu pemervithf negr avidonzsiy yqf melviduqi segenpf bvs avidonzsiy dnf \
+				seluruhf tvuphf drhf avidonzsiy dnf avutukf memjuknf kesejhfteranf aumumf , \
+				mvecfedsfknf kehidupnf bvs , dnf aikutf melkfsnknf ketfetibnf duniy yqf bfedsrfknf \
+				kemfedzkanf , pfedmynf abdi dnf keadilnf sosiylf , mk disusunflhf kemfedzkanf \
+				avidonzsiy aitu dlmf suwtu avudqf-/ dsrf negr avidonzsiy , yqf tfebvetukf dlmf suwtu \
+				susunnf negr rzpubflikf avidonzsiy yqf bfekedwfltnf rafytf deqnf bfedsrf kepd \
+				ketuhnnf yqf mh aes , kemnusiyanf yqf adilf dnf bfeadbf , pfestuwnf avidonzsiy , \
+				kerafytnf yqf dipvipinf aolzhf hikfmtf kebijkfsnanf dlmf pfemus;wrtnf atwf pfewkilnf \
+				, sfet deqnf mewujudfknf suwtu keadilnf sosiylf bgi seluruhf rafytf avidonzsiy ."
+		}
+
     	canvas.width = canvas.width;
     	context.lineWidth = font_width_abs;
     	context.lineCap = 'round';
@@ -688,8 +728,15 @@ $(document).ready(function(){
     	var prevChar = ' ';
     	var wordStartIdx = 0;
     	var wordStartPos = ax;
+    	var numLines = 1;
 
     	text = reposition(text);
+
+    	var lineBreak = function() {
+    		ax = orig_x;
+    		ay += 7*ar;
+    		numLines ++;
+    	}
 
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
@@ -698,8 +745,7 @@ $(document).ready(function(){
     		} else if (c == 'v') {
     			state = 'v';
     		} else if (c == '\n') {
-    			ax = orig_x;
-    			ay += 7*ar;
+    			lineBreak();
     		} else if (c == ' ') {
     			prevChar = ' ';
     			ax = draw(' ', state, ax, ay, ar);
@@ -718,8 +764,7 @@ $(document).ready(function(){
     					state = 'a';
     					wordStartPos = orig_x;
     					context.beginPath();
-    					ax = orig_x;
-    					ay += 7*ar;
+    					lineBreak();
     					continue;
     				}
     				ax = orig_x;
@@ -735,7 +780,7 @@ $(document).ready(function(){
     	}
     	context.stroke();
 
-    	return ay + 3*ar;
+    	return {w: ax + ar, h: ay + 3*ar, n: numLines};
     }
 
     var kern = function(prevChar, c) {
@@ -806,6 +851,7 @@ $(document).ready(function(){
     		case ' ':
     			return _spasi(ax, ay, ar);
     		case "'":
+    		case ';':
     			return _bisah(ax, ay, ar);
     		case '-':
     			return _sempang(ax, ay, ar);
@@ -815,6 +861,10 @@ $(document).ready(function(){
     			return _danda(ax, ay, ar);
     		case ',':
     			return _carik(ax, ay, ar);
+    		case '[':
+    			return _kbuka(ax, ay, ar);
+    		case ']':
+    			return _ktutup(ax, ay, ar);
     		case '!':
     			ax = _danda(ax, ay, ar);
     			return _carik(ax, ay, ar);
@@ -851,8 +901,11 @@ $(document).ready(function(){
     		case '.':
     		case ',':
     			return 1;
+    		case '[':
+    		case ']':
     		case ' ':
     		case "'":
+    		case ';':
     		case '-':
     		case '!':
     		case '?':
@@ -896,30 +949,16 @@ $(document).ready(function(){
     	}
     }
 
+    var text_height = 0;
+    var text_width = 0;
+    var num_lines = 0;
+
     // parse and adjust the canvas height
     var parse_adjust = function(text) {
-    	if (text == '***') { //sample text
-			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\npvebukanf\n\n\
-				bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
-				pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
-				dfn peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
-				svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
-				ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
-				, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
-				aolzhf keaiqinnf luhurf , supy bfekehidupnf kebvsanf yqf bzbsf , mk rafytf \
-				avidonzsiy mextknf deqnf aini kemfedzkanfx .\n\nkemudiynf dripd aitu avutukf \
-				mvebvetukf suwtu pemervithf negr avidonzsiy yqf melviduqi segenpf bvs avidonzsiy dnf \
-				seluruhf tvuphf drhf avidonzsiy dnf avutukf memjuknf kesejhfteranf aumumf , \
-				mvecfedsfknf kehidupnf bvs , dnf aikutf melkfsnknf ketfetibnf duniy yqf bfedsrfknf \
-				kemfedzkanf , pfedmynf abdi dnf keadilnf sosiylf , mk disusunflhf kemfedzkanf \
-				avidonzsiy aitu dlmf suwtu avudqf-/ dsrf negr avidonzsiy , yqf tfebvetukf dlmf suwtu \
-				susunnf negr rzpubflikf avidonzsiy yqf bfekedwfltnf rafytf deqnf bfedsrf kepd \
-				ketuhnnf yqf mh aes , kemnusiyanf yqf adilf dnf bfeadbf , pfestuwnf avidonzsiy , \
-				kerafytnf yqf dipvipinf aolzhf hikfmtf kebijkfsnanf dlmf pfemus'wrtnf atwf pfewkilnf \
-				, sfet deqnf mewujudfknf suwtu keadilnf sosiylf bgi seluruhf rafytf avidonzsiy ."
-		}
-
-    	var text_height = parse(text);
+    	var text_info = parse(text);
+    	text_height = text_info.h;
+    	text_width = text_info.w;
+    	num_lines = text_info.n;
 		if ((text_height > min_height && text_height != canvas.height) || 
 			(text_height <= min_height && canvas.height != min_height)) {
 			canvas.height = Math.max(text_height, min_height);
@@ -934,6 +973,7 @@ $(document).ready(function(){
     var font_width_abs = font_size/20 * font_width;
     var font_color = 'black';
     var min_height = canvas.height;
+    var min_width = canvas.width;
 
     // Sets the default values:
     $("#font-size").val(font_size);
@@ -975,7 +1015,22 @@ $(document).ready(function(){
 	});
 
 	$("#save_button").click(function(){
-		$(this).attr('href', canvas.toDataURL());
+		if (text_height < min_height || num_lines < 2) {
+			var input_text = $(".textarea-home#input").val();
+			var prev_height = canvas.height;
+			canvas.height = text_height;
+			if (num_lines < 2)
+				canvas.width = text_width;
+			parse(input_text);
+			$(this).attr('href', canvas.toDataURL());
+			
+			//return to original
+			canvas.width = min_width;
+			canvas.height = prev_height;
+			parse(input_text);
+		} else {
+			$(this).attr('href', canvas.toDataURL());
+		}
 	});
 
 });
