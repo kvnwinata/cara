@@ -588,7 +588,7 @@ $(document).ready(function(){
 		context.arc(x, y-4*r, r, Math.PI/2, 0, true);
 		context.moveTo(x+r, y-4*r);
 		context.lineTo(x+r, y);
-		return x+2.5*r;
+		return x+2.25*r;
 	}
 
 	var _2 = function(x, y, r) {
@@ -663,6 +663,8 @@ $(document).ready(function(){
     var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
     var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']'];
     var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', 'h', '.', ',', '?', '!', "'", '0', '5', '6', '['];
+    var portruding = ['a', 'q', 'h', ']'];
+    var portruding_sans = ['q', 'h', ']'];
 
     // moves 'f' and 'v'
     var reposition = function(text) {
@@ -755,6 +757,11 @@ $(document).ready(function(){
     			if (font_style == 'serif' && vowels.indexOf(c) == -1) {
     				ax += kern(prevChar, c)*ar;
     				prevChar = c;
+    			}
+    			if (ax == orig_x) {
+    				if ((font_style == 'serif' && portruding.indexOf(c) != -1) || (font_style != 'serif' && portruding_sans.indexOf(c) != -1)) {
+    					ax += 0.5*ar;
+    				} 
     			}
     			if (ax > canvas.width - (char_width(c)+0.5)*ar) { // line break
     				if (wordStartPos > orig_x) { // break whole word
@@ -911,7 +918,7 @@ $(document).ready(function(){
     		case '?':
     			return 2;
     		case '1':
-    			return 2.5;
+    			return 2.25;
     		case 'a':
     		case 'k':
     		case 't':
