@@ -1033,4 +1033,7 @@ $(document).ready(function(){
 		}
 	});
 
+	var input_text = $(this).val();
+	parse_adjust(input_text);
+
 });
