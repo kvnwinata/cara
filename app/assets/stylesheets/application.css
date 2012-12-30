@@ -26,5 +26,10 @@
 	background-color: rgb(220,220,220);
 	padding-top: 20px;
 	min-height: 50px;
-	margin-bottom: 0px; 
+	margin-
+	bottom: 0px; 
+}
+
+.grey{
+	color: grey;
 }
