@@ -557,10 +557,10 @@ $(document).ready(function(){
 	}
 
 	var _kbuka = function(x, y, r) {
-		context.moveTo(x, y-2*r);
-		context.lineTo(x, y+2*r);
-		context.moveTo(x, y+2*r);
-		context.lineTo(x+1.5*r, y+2*r);
+		context.moveTo(x, y);
+		context.lineTo(x, y-4*r);
+		context.moveTo(x, y-4*r);
+		context.lineTo(x+1.5*r, y-4*r);
 		return x+2*r;
 	}
 
@@ -659,6 +659,18 @@ $(document).ready(function(){
     	return x+3*r;
     }
 
+    var _minus = function(x, y, r) {
+		context.moveTo(x, y-2*r);
+		context.lineTo(x+r, y-2*r);
+		return x+2*r;
+	}
+
+	var _point = function(x, y, r) {
+		context.moveTo(x+r/8, y);
+		context.arc(x, y, r/8, 0, 2*Math.PI);
+		return x+r;
+	}
+
     var vowels = ['z', 'i', 'o', 'u', 'e'];
     var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
     var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']'];
@@ -732,6 +744,7 @@ $(document).ready(function(){
     	var wordStartPos = ax;
     	var numLines = 1;
 
+    	text = text.toLowerCase();
     	text = reposition(text);
 
     	var lineBreak = function() {
@@ -857,7 +870,6 @@ $(document).ready(function(){
     			return _e(ax, ay, ar);
     		case ' ':
     			return _spasi(ax, ay, ar);
-    		case "'":
     		case ';':
     			return _bisah(ax, ay, ar);
     		case '-':
@@ -898,6 +910,10 @@ $(document).ready(function(){
     			return _8(ax, ay, ar);
     		case '9':
     			return _9(ax, ay, ar);
+    		case '_':
+    			return _minus(ax, ay, ar);
+    		case '>':
+    			return _point(ax, ay, ar);	
     		default:
     			return ax;
     	}
@@ -907,15 +923,16 @@ $(document).ready(function(){
     	switch (c) {
     		case '.':
     		case ',':
+    		case '>':
     			return 1;
     		case '[':
     		case ']':
     		case ' ':
-    		case "'":
     		case ';':
     		case '-':
     		case '!':
     		case '?':
+    		case '_':
     			return 2;
     		case '1':
     			return 2.25;
