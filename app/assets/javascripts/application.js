@@ -997,7 +997,9 @@ $(document).ready(function(){
     var font_width_abs = font_size/20 * font_width;
     var font_color = 'black';
     var min_height = canvas.height;
-    var min_width = canvas.width;
+    var width_ratio = 0.7;
+    var min_width = $(window).width() * width_ratio;
+    canvas.width = min_width;
 
     // Sets the default values:
     $("#font-size").val(font_size);
@@ -1057,7 +1059,14 @@ $(document).ready(function(){
 		}
 	});
 
-	var input_text = $(this).val();
+	$(window).resize(function() {
+		min_width = $(window).width() * width_ratio;
+    	canvas.width = min_width;
+    	var input_text = $(".textarea-home#input").val();
+		parse_adjust(input_text);
+	});
+
+	var input_text = $(".textarea-home#input").val();
 	parse_adjust(input_text);
 
 });
