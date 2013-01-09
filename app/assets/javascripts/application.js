@@ -26,7 +26,7 @@ $(document).ready(function(){
 	var right_a = function(x, y, r) {
 		context.moveTo(x, y-r);
 		context.lineTo(x, y-2*r);
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.moveTo(x-0.5*r, y-2*r);
 		}
 		context.lineTo(x+r, y-2*r);
@@ -66,7 +66,7 @@ $(document).ready(function(){
 		context.moveTo(x, y-r);
 		context.arc(x+r, y-r, r, Math.PI, 0, true);
 		context.lineTo(x+2*r, y-2*r);
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.moveTo(x+2*r, y-2*r);
 			context.lineTo(x+2*r, y);
 		}
@@ -74,7 +74,7 @@ $(document).ready(function(){
 	}
 
 	var left_s = function(x, y, r) {
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.moveTo(x+r, y);
 			context.arc(x+r, y-r, r, Math.PI/2, 3*Math.PI/2);
 			context.lineTo(x+2.5*r, y-2*r);
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
 	var _t = function(x, y, r) {
 		left_t(x, y, r);
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.lineTo(x+2*r, y);
 		}
 		return x+3*r;
@@ -152,7 +152,7 @@ $(document).ready(function(){
 	var _n = function(x, y, r) {
 		context.moveTo(x+2*r, y-2*r);
 		context.lineTo(x+r, y-2*r);
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
 		} else {
 			context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI/2, true);
@@ -179,7 +179,7 @@ $(document).ready(function(){
 		context.lineTo(x+2*r, y-2*r);
 		context.arc(x+r, y-r, r, 3*Math.PI/2, 0, true);
 		context.lineTo(x+2*r, y-2*r);
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			context.moveTo(x+2*r, y-2*r);
 			context.lineTo(x+2*r, y);
 		}
@@ -287,7 +287,7 @@ $(document).ready(function(){
 	}
 
 	var _fn = function(x, y, r) {
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			_n(x, y, r);
 			_f(x, y, r);
 		} else {
@@ -415,7 +415,7 @@ $(document).ready(function(){
 	}
 
 	var _vn = function(x, y, r) {
-		if (font_style == 'serif') {
+		if (font_style == 'classic') {
 			_n(x, y, r);
 			_v(x, y, r);
 		} else {
@@ -708,7 +708,7 @@ $(document).ready(function(){
 			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\npvebukanf\n\n\
 				bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
 				pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
-				dfn peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
+				dnf peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
 				svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
 				ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
 				, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
@@ -767,12 +767,12 @@ $(document).ready(function(){
     			wordStartIdx = i+1;
     			wordStartPos = ax;
     		} else {
-    			if (font_style == 'serif' && vowels.indexOf(c) == -1) {
+    			if (font_style == 'classic' && vowels.indexOf(c) == -1) {
     				ax += kern(prevChar, c)*ar;
     				prevChar = c;
     			}
     			if (ax == orig_x) {
-    				if ((font_style == 'serif' && portruding.indexOf(c) != -1) || (font_style != 'serif' && portruding_sans.indexOf(c) != -1)) {
+    				if ((font_style == 'classic' && portruding.indexOf(c) != -1) || (font_style != 'classic' && portruding_sans.indexOf(c) != -1)) {
     					ax += 0.5*ar;
     				} 
     			}
@@ -991,7 +991,7 @@ $(document).ready(function(){
     }
 
     // Default values
-    var font_style = 'sans-serif';
+    var font_style = 'modern';
     var font_size = 14;
     var font_width = 3;
     var font_width_abs = font_size/20 * font_width;
