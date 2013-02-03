@@ -770,7 +770,11 @@ $(document).ready(function(){
     		} else {
     			if (font_style == 'classic' && vowels.indexOf(c) == -1) {
     				ax += kern(prevChar, c)*ar;
-    				prevChar = c;
+    				if (state != 'a' && (c == 'n' || c == 'l')) {
+    					prevChar = ','
+    				} else {
+    					prevChar = c;
+    				}
     			}
     			if (ax == orig_x) {
     				if ((font_style == 'classic' && portruding.indexOf(c) != -1) || (font_style != 'classic' && portruding_sans.indexOf(c) != -1)) {
