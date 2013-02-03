@@ -673,8 +673,9 @@ $(document).ready(function(){
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
     var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
-    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']'];
-    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', 'h', '.', ',', '?', '!', "'", '0', '5', '6', '['];
+    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']', '_'];
+    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', '.', ',', '?', '!', ';', '0', '5', '6', '[', '_'];
+    var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', '.', ',', '?', '!', '2', ']', '>'];
     var portruding = ['a', 'q', 'h', ']'];
     var portruding_sans = ['q', 'h', ']'];
 
@@ -812,6 +813,11 @@ $(document).ready(function(){
     	}
     	if (c == 'a') {
     		if (a_phobic.indexOf(prevChar) != -1) {
+    			k += 0.25;
+    		}
+    	}
+    	if (c == 'q' || c == 'h') {
+    		if (q_phobic.indexOf(prevChar) != -1) {
     			k += 0.25;
     		}
     	}
