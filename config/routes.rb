@@ -5,6 +5,8 @@ Cara::Application.routes.draw do
   match 'home' => 'home#index'
 
   match 'documentation' => 'home#documentation'
+
+  match 'uud45_plain_text' => 'home#uud45_plain_text'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

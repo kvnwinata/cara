@@ -704,27 +704,34 @@ $(document).ready(function(){
     	return newText.join("");
     }
 
+    var uud45;
+	$.get('assets/uud45.txt', function(data) {
+    	uud45 = data;
+	}); 
+
     var parse = function(text) {
 
     	if (text == '***') { //sample text
-			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\n[pvebukanf]\n\n\
-				bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
-				pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
-				dnf peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
-				svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
-				ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
-				, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
-				aolzhf keaiqinnf luhurf , supy bfekehidupnf kebvsanf yqf bzbsf , mk rafytf \
-				avidonzsiy mextknf deqnf aini kemfedzkanfx .\n\nkemudiynf dripd aitu avutukf \
-				mvebvetukf suwtu pemervithf negr avidonzsiy yqf melviduqi segenpf bvs avidonzsiy dnf \
-				seluruhf tvuphf drhf avidonzsiy dnf avutukf memjuknf kesejhfteranf aumumf , \
-				mvecfedsfknf kehidupnf bvs , dnf aikutf melkfsnknf ketfetibnf duniy yqf bfedsrfknf \
-				kemfedzkanf , pfedmynf abdi dnf keadilnf sosiylf , mk disusunflhf kemfedzkanf \
-				avidonzsiy aitu dlmf suwtu avudqf-/ dsrf negr avidonzsiy , yqf tfebvetukf dlmf suwtu \
-				susunnf negr rzpubflikf avidonzsiy yqf bfekedwfltnf rafytf deqnf bfedsrf kepd \
-				ketuhnnf yqf mh aes , kemnusiyanf yqf adilf dnf bfeadbf , pfestuwnf avidonzsiy , \
-				kerafytnf yqf dipvipinf aolzhf hikfmtf kebijkfsnanf dlmf pfemus;wrtnf atwf pfewkilnf \
-				, sfet deqnf mewujudfknf suwtu keadilnf sosiylf bgi seluruhf rafytf avidonzsiy ."
+    		text = uud45;
+
+			// text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\n[pvebukanf]\n\n\
+			// 	bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
+			// 	pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
+			// 	dnf peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
+			// 	svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
+			// 	ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
+			// 	, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
+			// 	aolzhf keaiqinnf luhurf , supy bfekehidupnf kebvsanf yqf bzbsf , mk rafytf \
+			// 	avidonzsiy mextknf deqnf aini kemfedzkanfx .\n\nkemudiynf dripd aitu avutukf \
+			// 	mvebvetukf suwtu pemervithf negr avidonzsiy yqf melviduqi segenpf bvs avidonzsiy dnf \
+			// 	seluruhf tvuphf drhf avidonzsiy dnf avutukf memjuknf kesejhfteranf aumumf , \
+			// 	mvecfedsfknf kehidupnf bvs , dnf aikutf melkfsnknf ketfetibnf duniy yqf bfedsrfknf \
+			// 	kemfedzkanf , pfedmynf abdi dnf keadilnf sosiylf , mk disusunflhf kemfedzkanf \
+			// 	avidonzsiy aitu dlmf suwtu avudqf-/ dsrf negr avidonzsiy , yqf tfebvetukf dlmf suwtu \
+			// 	susunnf negr rzpubflikf avidonzsiy yqf bfekedwfltnf rafytf deqnf bfedsrf kepd \
+			// 	ketuhnnf yqf mh aes , kemnusiyanf yqf adilf dnf bfeadbf , pfestuwnf avidonzsiy , \
+			// 	kerafytnf yqf dipvipinf aolzhf hikfmtf kebijkfsnanf dlmf pfemus;wrtnf atwf pfewkilnf \
+			// 	, sfet deqnf mewujudfknf suwtu keadilnf sosiylf bgi seluruhf rafytf avidonzsiy ."
 		}
 
     	canvas.width = canvas.width;
