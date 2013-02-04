@@ -676,6 +676,7 @@ $(document).ready(function(){
     var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']', '_'];
     var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', '.', ',', '?', '!', ';', '0', '5', '6', '[', '_'];
     var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', '.', ',', '?', '!', '2', ']', '>'];
+    var kurung_phobic = ['5', '7'];
     var portruding = ['a', 'q', 'h', ']'];
     var portruding_sans = ['q', 'h', ']'];
 
@@ -706,7 +707,7 @@ $(document).ready(function(){
     var parse = function(text) {
 
     	if (text == '***') { //sample text
-			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\npvebukanf\n\n\
+			text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\n[pvebukanf]\n\n\
 				bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
 				pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
 				dnf peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
@@ -823,6 +824,16 @@ $(document).ready(function(){
     	if (c == 'q' || c == 'h') {
     		if (q_phobic.indexOf(prevChar) != -1) {
     			k += 0.25;
+    		}
+    	}
+    	if (prevChar == '[') {
+    		if (kurung_phobic.indexOf(c) != -1) {
+    			k += 0.25
+    		}
+    	}
+    	if (c == ']') {
+    		if (kurung_phobic.indexOf(prevChar) != -1) {
+    			k += 0.25
     		}
     	}
     	return k;
