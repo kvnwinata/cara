@@ -17,6 +17,14 @@
 $(document).ready(function(){
 
 	var canvas = document.getElementById('textarea-output');
+
+	if (canvas == null) {
+		document.title = "Cara - Documentation";
+		return;
+	} else {
+		document.title = "Cara - Home";
+	}
+
 	var context = canvas.getContext('2d');
 
 	context.lineWidth = 2;
