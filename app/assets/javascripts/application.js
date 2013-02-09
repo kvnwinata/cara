@@ -676,7 +676,7 @@ $(document).ready(function(){
     var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']', '_'];
     var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', '.', ',', '?', '!', ';', '0', '5', '6', '[', '_'];
     var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', '.', ',', '?', '!', '2', ']', '>'];
-    var kurung_phobic = ['5', '7'];
+    var kurung_phobic = ['5', '7', '[', ']'];
     var portruding = ['a', 'q', 'h', ']'];
     var portruding_sans = ['q', 'h', ']'];
 
@@ -709,29 +709,18 @@ $(document).ready(function(){
     	uud45 = data;
 	}); 
 
+	var udhr;
+	$.get('assets/udhr.txt', function(data) {
+    	udhr = data;
+	});
+
     var parse = function(text) {
 
-    	if (text == '***') { //sample text
+    	//sample texts
+    	if (text == '***') {
     		text = uud45;
-
-			// text = "avudqf-/ dsrf negr rzpubflikf avidonzsiy thunf 1945\n\n[pvebukanf]\n\n\
-			// 	bhfw sesvuguhfx kemfedzkanf aitu aiylhf hkf segl bvs dnf aolzhf sebbf aitu , mk \
-			// 	pvejjhnf di atsf duniy hrusf dihpusfknf kren tidaf sesuwyf deqnf peri-kemnusiyanf \
-			// 	dnf peri-keadilnf .\n\ndnf pfejuwqnf pfegerknf kemfedzkanf avidonzsiy telhf \
-			// 	svpyflhf kepd satf yqf bfebhgiy deqnf selmtf svetos mveavtrfknf rafytf avidonzsiy \
-			// 	ke depnf pvitu gfebqf kemfedzkanf negr avidonzsiy , yqf mfedzk , bfestu , bfedwfltf \
-			// 	, adilf dnf mafmurf .\n\natsf bfektf rhfmtf alflhf yqf mh kuws dnf deqnf didoroqfknf \
-			// 	aolzhf keaiqinnf luhurf , supy bfekehidupnf kebvsanf yqf bzbsf , mk rafytf \
-			// 	avidonzsiy mextknf deqnf aini kemfedzkanfx .\n\nkemudiynf dripd aitu avutukf \
-			// 	mvebvetukf suwtu pemervithf negr avidonzsiy yqf melviduqi segenpf bvs avidonzsiy dnf \
-			// 	seluruhf tvuphf drhf avidonzsiy dnf avutukf memjuknf kesejhfteranf aumumf , \
-			// 	mvecfedsfknf kehidupnf bvs , dnf aikutf melkfsnknf ketfetibnf duniy yqf bfedsrfknf \
-			// 	kemfedzkanf , pfedmynf abdi dnf keadilnf sosiylf , mk disusunflhf kemfedzkanf \
-			// 	avidonzsiy aitu dlmf suwtu avudqf-/ dsrf negr avidonzsiy , yqf tfebvetukf dlmf suwtu \
-			// 	susunnf negr rzpubflikf avidonzsiy yqf bfekedwfltnf rafytf deqnf bfedsrf kepd \
-			// 	ketuhnnf yqf mh aes , kemnusiyanf yqf adilf dnf bfeadbf , pfestuwnf avidonzsiy , \
-			// 	kerafytnf yqf dipvipinf aolzhf hikfmtf kebijkfsnanf dlmf pfemus;wrtnf atwf pfewkilnf \
-			// 	, sfet deqnf mewujudfknf suwtu keadilnf sosiylf bgi seluruhf rafytf avidonzsiy ."
+		} else if (text == '*****') {
+			text = udhr;
 		}
 
     	canvas.width = canvas.width;
