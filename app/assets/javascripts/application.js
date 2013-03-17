@@ -583,6 +583,7 @@ $(document).ready(function(){
 
 
 	var _0 = function(x, y, r) {
+		y += r;
 		context.moveTo(x, y-3*r);
 		context.arc(x+r, y-3*r, r, Math.PI, 0);
 		context.lineTo(x+2*r, y-r);
@@ -592,6 +593,7 @@ $(document).ready(function(){
 	}
 
 	var _1 = function(x, y, r) {
+		y += r;
 		context.moveTo(x, y-3*r);
 		context.arc(x, y-4*r, r, Math.PI/2, 0, true);
 		context.moveTo(x+r, y-4*r);
@@ -600,6 +602,7 @@ $(document).ready(function(){
 	}
 
 	var _2 = function(x, y, r) {
+		y += r;
 		context.moveTo(x, y-3*r);
 		context.arc(x+r, y-3*r, r, Math.PI, Math.PI/2);
 		context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI, true);
@@ -609,6 +612,7 @@ $(document).ready(function(){
 	}
 
 	var _3 = function(x, y, r) {
+		y += r;
 		context.moveTo(x, y-3*r);
 		context.arc(x+r, y-3*r, r, Math.PI, Math.PI/2);
 		context.arc(x+r, y-r, r, 3*Math.PI/2, Math.PI);
@@ -616,6 +620,7 @@ $(document).ready(function(){
 	}
 
 	var _4 = function(x, y, r) {
+		y += r;
 		context.moveTo(x+1.5*r, y);
 		context.lineTo(x+1.5*r, y-4*r);
 		context.moveTo(x+1.5*r, y-4*r);
@@ -626,6 +631,7 @@ $(document).ready(function(){
 	}
 
 	var _5 = function(x, y, r) {
+		y += r;
         context.moveTo(x+2*r, y-4*r);
         context.lineTo(x, y-4*r);
         context.lineTo(x, y-2*r);
@@ -636,6 +642,7 @@ $(document).ready(function(){
     }
 
     var _6 = function(x, y, r) {
+    	y += r;
     	context.moveTo(x+2*r, y-3*r);
     	context.arc(x+r, y-3*r, r, 0, Math.PI, true);
     	context.lineTo(x, y-r);
@@ -644,6 +651,7 @@ $(document).ready(function(){
     }
 
     var _7 = function(x, y, r) {
+    	y += r;
 		context.moveTo(x, y-4*r);
 		context.lineTo(x+2*r, y-4*r);
 		context.moveTo(x+2*r, y-4*r);
@@ -652,6 +660,7 @@ $(document).ready(function(){
 	}
 
     var _8 = function(x, y, r) {
+    	y += r;
     	context.moveTo(x+2*r, y-3*r);
     	context.arc(x+r, y-3*r, r, 0, 2*Math.PI, true);
     	context.moveTo(x+2*r, y-r);
@@ -660,6 +669,7 @@ $(document).ready(function(){
     }
 
     var _9 = function(x, y, r) {
+    	y += r;
     	context.moveTo(x+2*r, y-3*r);
     	context.arc(x+r, y-3*r, r, 0, 2*Math.PI);
     	context.lineTo(x+2*r, y-r);
@@ -667,24 +677,42 @@ $(document).ready(function(){
     	return x+3*r;
     }
 
-    var _minus = function(x, y, r) {
-		context.moveTo(x, y-2*r);
-		context.lineTo(x+r, y-2*r);
+    var _plus = function(x, y, r) {
+		context.moveTo(x, y-r);
+		context.lineTo(x+r, y-r);
+		context.moveTo(x+0.5*r, y-1.5*r);
+		context.lineTo(x+0.5*r, y-0.5*r);
+		return x+2*r;
+	}
+
+	var _equal = function(x, y, r) {
+		context.moveTo(x, y-1.5*r);
+		context.lineTo(x+r, y-1.5*r);
+		context.moveTo(x, y-0.5*r);
+		context.lineTo(x+r, y-0.5*r);
 		return x+2*r;
 	}
 
 	var _point = function(x, y, r) {
-		context.moveTo(x+r/8, y);
-		context.arc(x, y, r/8, 0, 2*Math.PI);
+		context.moveTo(x+r/8, y-r);
+		context.arc(x, y-r, r/8, 0, 2*Math.PI);
+		return x+r;
+	}
+
+	var _colon = function(x, y, r) {
+		context.moveTo(x+r/8, y-1.5*r);
+		context.arc(x, y-1.5*r, r/8, 0, 2*Math.PI);
+		context.moveTo(x+r/8, y-0.5*r);
+		context.arc(x, y-0.5*r, r/8, 0, 2*Math.PI);
 		return x+r;
 	}
 
     var vowels = ['z', 'i', 'o', 'u', 'e'];
     var consonants = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'n', 'p', 'b', 'm', 'y', 'r', 'l', 'w', 's', 'h'];
-    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']', '_'];
-    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', '.', ',', '?', '!', ';', '0', '5', '6', '[', '_'];
-    var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', '.', ',', '?', '!', '2', ']', '>'];
-    var kurung_phobic = ['5', '7', '[', ']'];
+    var a_phobic = ['g', 'j', 'd', 'n', 'p', 'b', 'm', 'l', 's', '.', ',', '?', '!', '0', '5', '9', ']'];
+    var s_phobic = ['a', 'x', 'p', 'b', 'm', 'y', 'r', 'l','w', '.', ',', '?', '!', ';', '0', '5', '6', '['];
+    var q_phobic = ['a', 'k', 'g', 'q', 'c', 'j', 'x', 't', 'd', 'p', 'b', 'm', 'y', 'r', 'w', 's', 'h', '.', ',', '?', '!', '2', ']'];
+    var kurung_phobic = ['[', ']'];
     var portruding = ['a', 'q', 'h', ']'];
     var portruding_sans = ['q', 'h', ']'];
 
@@ -935,10 +963,14 @@ $(document).ready(function(){
     			return _8(ax, ay, ar);
     		case '9':
     			return _9(ax, ay, ar);
-    		case '_':
-    			return _minus(ax, ay, ar);
-    		case '>':
-    			return _point(ax, ay, ar);	
+    		case '+':
+    			return _plus(ax, ay, ar);
+    		case '=':
+    			return _equal(ax, ay, ar);
+    		case "'":
+    			return _point(ax, ay, ar);
+    		case ':':
+    			return _colon(ax, ay, ar);
     		default:
     			return ax;
     	}

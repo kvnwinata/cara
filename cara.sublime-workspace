@@ -271,7 +271,7 @@
 			"file": "app/assets/javascripts/application.js",
 			"settings":
 			{
-				"buffer_size": 25372,
+				"buffer_size": 25471,
 				"line_ending": "Unix"
 			}
 		},
@@ -284,18 +284,10 @@
 			}
 		},
 		{
-			"file": "config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 1867,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "app/views/home/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 2025,
+				"buffer_size": 2009,
 				"line_ending": "Unix"
 			}
 		},
@@ -303,7 +295,7 @@
 			"file": "app/views/home/documentation.html.erb",
 			"settings":
 			{
-				"buffer_size": 6263,
+				"buffer_size": 7057,
 				"line_ending": "Unix"
 			}
 		},
@@ -315,6 +307,38 @@
 			"settings":
 			{
 				"buffer_size": 785,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/routes.rb",
+			"settings":
+			{
+				"buffer_size": 1922,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/_header.html.erb",
+			"settings":
+			{
+				"buffer_size": 322,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 393,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/bootstrap.js",
+			"settings":
+			{
+				"buffer_size": 56478,
 				"line_ending": "Unix"
 			}
 		},
@@ -331,14 +355,6 @@
 			"settings":
 			{
 				"buffer_size": 271,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_footer.html.erb",
-			"settings":
-			{
-				"buffer_size": 194,
 				"line_ending": "Unix"
 			}
 		}
@@ -383,15 +399,16 @@
 	},
 	"file_history":
 	[
-		"/Users/KW/Documents/git/cara/app/views/layouts/_footer.html.erb",
+		"/Users/KW/Documents/git/cara/cara.sublime-project",
+		"/Users/KW/Documents/git/cara/config/routes.rb",
 		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
 		"/Users/KW/Documents/git/cara/app/views/layouts/application.html.erb",
-		"/Users/KW/Documents/git/cara/cara.sublime-project",
-		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
+		"/Users/KW/Documents/git/cara/app/assets/stylesheets/bootstrap.css",
+		"/Users/KW/Documents/git/cara/app/views/layouts/_footer.html.erb",
+		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/application.css",
 		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
-		"/Users/KW/Documents/git/cara/config/routes.rb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/app/controllers/groups_controller.rb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/app/controllers/attendances_controller.rb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/test/functional/groups_controller_test.rb",
@@ -509,8 +526,7 @@
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/config/routes.rb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/controllers/questions_controller.rb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/show.js",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/answer.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/question.rb"
+		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/answer.rb"
 	],
 	"find":
 	{
@@ -529,6 +545,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"serif",
 			"grey",
 			"font_width",
 			"font_size",
@@ -616,7 +633,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 10,
 			"sheets":
 			[
 				{
@@ -624,15 +641,15 @@
 					"file": "app/assets/javascripts/application.js",
 					"settings":
 					{
-						"buffer_size": 25372,
+						"buffer_size": 25471,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17001,
-								17001
+								817,
+								817
 							]
 						],
 						"settings":
@@ -641,7 +658,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 12605.0,
+						"translation.y": 118.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -675,25 +692,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "config/routes.rb",
+					"file": "app/views/home/index.html.erb",
 					"settings":
 					{
-						"buffer_size": 1867,
+						"buffer_size": 2009,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								141,
-								141
+								176,
+								176
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -703,18 +719,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/views/home/index.html.erb",
+					"file": "app/views/home/documentation.html.erb",
 					"settings":
 					{
-						"buffer_size": 2025,
+						"buffer_size": 7057,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								36,
-								36
+								6187,
+								6187
 							]
 						],
 						"settings":
@@ -730,33 +746,6 @@
 				},
 				{
 					"buffer": 4,
-					"file": "app/views/home/documentation.html.erb",
-					"settings":
-					{
-						"buffer_size": 6263,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4548,
-								4548
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2524.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "app/assets/stylesheets/application.css",
 					"settings":
 					{
@@ -782,7 +771,118 @@
 					"type": "text"
 				},
 				{
+					"buffer": 5,
+					"file": "config/routes.rb",
+					"settings":
+					{
+						"buffer_size": 1922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								285,
+								285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
 					"buffer": 6,
+					"file": "app/views/layouts/_header.html.erb",
+					"settings":
+					{
+						"buffer_size": 322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/assets/javascripts/bootstrap.js",
+					"settings":
+					{
+						"buffer_size": 56478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
 					"file": "app/assets/stylesheets/bootstrap.css",
 					"settings":
 					{
@@ -803,14 +903,14 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 4.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 9688.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "app/assets/stylesheets/home.css",
 					"settings":
 					{
@@ -821,39 +921,13 @@
 						"selection":
 						[
 							[
-								197,
-								197
+								38,
+								38
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/layouts/_footer.html.erb",
-					"settings":
-					{
-						"buffer_size": 194,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								114,
-								114
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
