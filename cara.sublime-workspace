@@ -271,90 +271,7 @@
 			"file": "app/assets/javascripts/application.js",
 			"settings":
 			{
-				"buffer_size": 25471,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cara.sublime-project",
-			"settings":
-			{
-				"buffer_size": 172,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/home/index.html.erb",
-			"settings":
-			{
-				"buffer_size": 2009,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/home/documentation.html.erb",
-			"settings":
-			{
-				"buffer_size": 7057,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "/*\n * This is a manifest file that'll be compiled into application.css, which will include all the files\n * listed below.\n *\n * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,\n * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.\n *\n * You're free to add application-wide styles to this file and they'll appear at the top of the\n * compiled file, but it's generally better to create a new file per style scope.\n *\n *= require_self\n *= require_tree .\n */\n\n.body{\n	background-color: rgb(220,220,220);\n}\n\n#main-content{\n	background-color: white;\n	margin-top: 40px;\n	min-height: 450px;\n}\n\n.footer#footer{\n	background-color: rgb(220,220,220);\n	padding-top: 20px;\n	min-height: 50px;\n	bottom: 0px; \n}",
-			"file": "app/assets/stylesheets/application.css",
-			"file_size": 818,
-			"file_write_time": 1356845693000000,
-			"settings":
-			{
-				"buffer_size": 785,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "config/routes.rb",
-			"settings":
-			{
-				"buffer_size": 1922,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_header.html.erb",
-			"settings":
-			{
-				"buffer_size": 322,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/application.html.erb",
-			"settings":
-			{
-				"buffer_size": 393,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/javascripts/bootstrap.js",
-			"settings":
-			{
-				"buffer_size": 56478,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/bootstrap.css",
-			"settings":
-			{
-				"buffer_size": 122657,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/home.css",
-			"settings":
-			{
-				"buffer_size": 271,
+				"buffer_size": 26117,
 				"line_ending": "Unix"
 			}
 		}
@@ -399,16 +316,18 @@
 	},
 	"file_history":
 	[
-		"/Users/KW/Documents/git/cara/cara.sublime-project",
-		"/Users/KW/Documents/git/cara/config/routes.rb",
-		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
-		"/Users/KW/Documents/git/cara/app/views/layouts/application.html.erb",
-		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
-		"/Users/KW/Documents/git/cara/app/assets/stylesheets/bootstrap.css",
-		"/Users/KW/Documents/git/cara/app/views/layouts/_footer.html.erb",
-		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
 		"/Users/KW/Documents/git/cara/app/assets/stylesheets/application.css",
+		"/Users/KW/Documents/git/cara/app/assets/stylesheets/home.css",
+		"/Users/KW/Documents/git/cara/app/views/home/documentation.html.erb",
 		"/Users/KW/Documents/git/cara/app/views/home/index.html.erb",
+		"/Users/KW/Documents/git/cara/app/assets/javascripts/application.js",
+		"/Users/KW/Documents/git/cara/cara.sublime-project",
+		"/Users/KW/Documents/git/cara/app/assets/stylesheets/bootstrap.css",
+		"/Users/KW/Documents/git/cara/app/assets/javascripts/bootstrap.js",
+		"/Users/KW/Documents/git/cara/app/views/layouts/application.html.erb",
+		"/Users/KW/Documents/git/cara/app/views/layouts/_header.html.erb",
+		"/Users/KW/Documents/git/cara/config/routes.rb",
+		"/Users/KW/Documents/git/cara/app/views/layouts/_footer.html.erb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/app/controllers/groups_controller.rb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/app/controllers/attendances_controller.rb",
 		"/Users/KW/Documents/6170/final project/KAPTCHA/test/functional/groups_controller_test.rb",
@@ -524,9 +443,7 @@
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/static_pages/about.html.erb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/controllers/answers_controller.rb",
 		"/Users/KW/Documents/6170/proj3/kevinw_proj3/config/routes.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/controllers/questions_controller.rb",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/views/questions/show.js",
-		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/models/answer.rb"
+		"/Users/KW/Documents/6170/proj3/kevinw_proj3/app/controllers/questions_controller.rb"
 	],
 	"find":
 	{
@@ -633,7 +550,7 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -641,15 +558,15 @@
 					"file": "app/assets/javascripts/application.js",
 					"settings":
 					{
-						"buffer_size": 25471,
+						"buffer_size": 26117,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								817,
-								817
+								22304,
+								22304
 							]
 						],
 						"settings":
@@ -658,279 +575,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 118.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "cara.sublime-project",
-					"settings":
-					{
-						"buffer_size": 172,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/home/index.html.erb",
-					"settings":
-					{
-						"buffer_size": 2009,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								176,
-								176
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/home/documentation.html.erb",
-					"settings":
-					{
-						"buffer_size": 7057,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6187,
-								6187
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/assets/stylesheets/application.css",
-					"settings":
-					{
-						"buffer_size": 785,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								785,
-								785
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "config/routes.rb",
-					"settings":
-					{
-						"buffer_size": 1922,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								285,
-								285
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/layouts/_header.html.erb",
-					"settings":
-					{
-						"buffer_size": 322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/layouts/application.html.erb",
-					"settings":
-					{
-						"buffer_size": 393,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/assets/javascripts/bootstrap.js",
-					"settings":
-					{
-						"buffer_size": 56478,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "app/assets/stylesheets/bootstrap.css",
-					"settings":
-					{
-						"buffer_size": 122657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 9688.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "app/assets/stylesheets/home.css",
-					"settings":
-					{
-						"buffer_size": 271,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								38,
-								38
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 16017.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
