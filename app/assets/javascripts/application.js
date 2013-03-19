@@ -715,6 +715,7 @@ $(document).ready(function(){
     var kurung_phobic = ['[', ']'];
     var portruding = ['a', 'q', 'h', ']'];
     var portruding_sans = ['q', 'h', ']'];
+    var breakable = ['-', '+', '=', "'", ':'];
 
     // moves 'f' and 'v'
     var reposition = function(text) {
@@ -751,14 +752,6 @@ $(document).ready(function(){
 	});
 
     var parse = function(text) {
-
-    	//sample texts
-    	if (text == '***') {
-    		text = uud45;
-		} else if (text == '*****') {
-			text = udhr;
-		}
-
     	canvas.width = canvas.width;
     	context.lineWidth = font_width_abs;
     	context.lineCap = 'round';
@@ -778,14 +771,15 @@ $(document).ready(function(){
     	var wordStartPos = ax;
     	var numLines = 1;
 
-    	text = text.toLowerCase();
-    	text = reposition(text);
-
-    	var lineBreak = function() {
+    	var lineBreak = function(i) {
     		ax = orig_x;
     		ay += 7*ar;
+    		wordStartIdx = i+1;
+    		wordStartPos = ax;
     		numLines ++;
     	}
+
+    	var breakLocations = [];
 
     	for (var i = 0; i < text.length; i++) {
     		c = text[i];
@@ -794,7 +788,7 @@ $(document).ready(function(){
     		} else if (c == 'v') {
     			state = 'v';
     		} else if (c == '\n') {
-    			lineBreak();
+    			lineBreak(i);
     		} else if (c == ' ') {
     			prevChar = ' ';
     			ax = draw(' ', state, ax, ay, ar);
@@ -803,26 +797,25 @@ $(document).ready(function(){
     		} else {
     			if (font_style == 'classic' && vowels.indexOf(c) == -1) {
     				ax += kern(prevChar, c)*ar;
-    				if (state != 'a' && (c == 'n' || c == 'l')) {
+    				if (state != 'a' && (c == 'n' || c == 'l')) { // nf, nv, lf, lv should not be kerned
     					prevChar = ','
     				} else {
     					prevChar = c;
     				}
     			}
-    			if (ax == orig_x) {
+    			if (ax == orig_x) { // align left a, q, h
     				if ((font_style == 'classic' && portruding.indexOf(c) != -1) || (font_style != 'classic' && portruding_sans.indexOf(c) != -1)) {
     					ax += 0.5*ar;
     				} 
     			}
     			if (ax > canvas.width - (char_width(c)+0.5)*ar) { // line break
     				if (wordStartPos > orig_x) { // break whole word
-    					context.stroke();
-    					context.clearRect(wordStartPos-ar, ay-4.5*ar, canvas.width-wordStartPos+ar, 7*ar);
+    					breakLocations.push(wordStartIdx);
     					i = wordStartIdx-1;
     					state = 'a';
-    					wordStartPos = orig_x;
+    					context.stroke();
     					context.beginPath();
-    					lineBreak();
+    					lineBreak(i);
     					continue;
     				}
     				ax = orig_x;
@@ -830,7 +823,7 @@ $(document).ready(function(){
     			}
     			ax = draw(c, state, ax, ay, ar);
     			state = 'a';
-    			if (c == '-') { // allow break after sempang
+    			if (breakable.indexOf(c) != -1) { // allow break after sempang etc
     				wordStartIdx = i+1;
     				wordStartPos = ax;
     			}
@@ -838,7 +831,7 @@ $(document).ready(function(){
     	}
     	context.stroke();
 
-    	return {w: ax + ar, h: ay + 3*ar, n: numLines};
+    	return {w: ax + ar, h: ay + 3*ar, n: numLines, b: breakLocations};
     }
 
     var kern = function(prevChar, c) {
@@ -1034,17 +1027,32 @@ $(document).ready(function(){
     var text_width = 0;
     var num_lines = 0;
 
-    // parse and adjust the canvas height
+    // parse, add line breaks, and adjust the canvas height
     var parse_adjust = function(text) {
-    	var text_info = parse(text);
+    	//sample texts
+    	if (text == '***') {
+    		text = uud45;
+		} else if (text == '*****') {
+			text = udhr;
+		}
+
+		text = text.toLowerCase();
+    	text = reposition(text);
+
+    	var text_info = parse(text); // layout parse
     	text_height = text_info.h;
     	text_width = text_info.w;
     	num_lines = text_info.n;
-		if ((text_height > min_height && text_height != canvas.height) || 
-			(text_height <= min_height && canvas.height != min_height)) {
-			canvas.height = Math.max(text_height, min_height);
-			parse(text); 
-		} 
+    	break_locations = text_info.b.reverse();
+
+    	// add line breaks
+    	for (var i = 0; i < break_locations.length; i++) {
+    		var loc = break_locations[i];
+    		text = text.substr(0, loc) + '\n' + text.substr(loc);
+    	}
+
+		canvas.height = Math.max(text_height, min_height);
+		parse(text);
     }
 
     // Default values
